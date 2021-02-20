@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class timer : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class timer : MonoBehaviour
     {
      if (timerIsRunning) {
          if (timeRemaining > 0){
-             time timeRemaining -= Time.deltaTime;
+             timeRemaining -= Time.deltaTime;
              DisplayTime(timeRemaining);
          } else{
              Debug.Log("time has run out!");
@@ -34,6 +35,6 @@ public class timer : MonoBehaviour
         timeToDisplay += 1;
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timeText.text = string.Formant("{0:00}:{1:00}", minutes, seconds);
+        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
