@@ -11,8 +11,8 @@ public class Scrolling : MonoBehaviour
     //adding difficutly?
     void Start()
     {
-        this.rb.velocity = new Vector2(0.0f, -0.25f);
-    }
+         this.rb.velocity = new Vector2(0.0f, -0.25f);
+    }       
 
     // Update is called once per frame
     void Update()
