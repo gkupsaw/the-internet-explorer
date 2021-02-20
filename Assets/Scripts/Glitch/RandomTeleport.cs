@@ -12,7 +12,7 @@ public class RandomTeleport : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(0, 0, 0);
+        // transform.position = new Vector3(0, 0, 0);
         InvokeRepeating("Teleport", teleportImmediately ? 0.001f : teleportCooldown, teleportCooldown);
     }
 
@@ -21,7 +21,7 @@ public class RandomTeleport : MonoBehaviour
         if (outlineTeleported)
         {
             transform.position = outline.transform.position;
-            outline.transform.position = transform.position;
+            outline.transform.position = transform.position; // not sure why this works...
             outlineTeleported = false;
         }
         else
