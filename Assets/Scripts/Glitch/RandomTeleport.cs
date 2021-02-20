@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class RandomTeleport : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool teleportImmediately = false;
+    public int teleportCooldown = 3;
+    public GameObject outline;
+
+    private bool outlineTeleported = false;
+
     void Start()
     {
-        
+        transform.position = new Vector3(0, 0, 0);
+        InvokeRepeating("Teleport", teleportImmediately ? 0.001f : teleportCooldown, teleportCooldown);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Teleport()
     {
-        
+        if (outlineTeleported)
+        {
+            transform.position = outline.transform.position;
+            outline.transform.position = transform.position;
+            outlineTeleported = false;
+        }
+        else
+        {
+            outline.transform.position = new Vector3(outline.transform.position.x + .5f, outline.transform.position.y + .5f, outline.transform.position.z);
+            outlineTeleported = true;
+        }
     }
 }
