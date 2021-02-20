@@ -20,14 +20,14 @@ public class timer : MonoBehaviour
     {
      if (timerIsRunning) {
          if (timeRemaining > 0){
-             time timeRemaining -= Time.deltaTime;
+            timeRemaining -= Time.deltaTime;
              DisplayTime(timeRemaining);
          } else{
              Debug.Log("time has run out!");
              timeRemaining = 0;
              timerIsRunning = false;
          }
-     }  
+     }
     }
 
     void DisplayTime(float timeToDisplay){
