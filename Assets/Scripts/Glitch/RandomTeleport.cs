@@ -7,7 +7,7 @@ public class RandomTeleport : MonoBehaviour
     public bool teleportImmediately = false;
     public int teleportCooldown = 3;
     public GameObject outline;
-    public GameObject platform;
+    private GameObject platform;
     public GameObject[] platforms;
 
     private bool outlineTeleported = false;
