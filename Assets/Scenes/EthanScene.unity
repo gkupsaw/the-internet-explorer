@@ -244,7 +244,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -542,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6146348823941438758, guid: 99beb9c6b76f04aa8a24c4c1e4fe3e54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.46
+      value: 2.4019
       objectReference: {fileID: 0}
     - target: {fileID: 6146348823941438758, guid: 99beb9c6b76f04aa8a24c4c1e4fe3e54, type: 3}
       propertyPath: m_LocalPosition.y
@@ -582,7 +582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7145794966744330698, guid: 99beb9c6b76f04aa8a24c4c1e4fe3e54, type: 3}
       propertyPath: m_Name
-      value: Glitch
+      value: Shadow Glitch
       objectReference: {fileID: 0}
     - target: {fileID: 8683051838525068511, guid: 99beb9c6b76f04aa8a24c4c1e4fe3e54, type: 3}
       propertyPath: m_Sprite
