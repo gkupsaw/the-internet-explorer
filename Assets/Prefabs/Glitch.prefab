@@ -71,12 +71,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a72bf3c43a8e24edf999d25c1c7c669d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b114e251fcfcb4c1d8be06f7f781a040, type: 3}
   m_Color: {r: 1, g: 0, b: 0.90361214, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 13.08, y: 12.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -153,12 +153,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: a72bf3c43a8e24edf999d25c1c7c669d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f524636db2b274256a0aa189b24c8729, type: 3}
   m_Color: {r: 0.9725491, g: 0.03529412, b: 0.87843144, a: 0.3137255}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 13.07, y: 12.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5110649033303490018}
   - component: {fileID: 5110649033303490017}
-  - component: {fileID: 8302967286159603610}
+  - component: {fileID: 206718947791436988}
   m_Layer: 0
   m_Name: Glitch
   m_TagString: Glitch
@@ -191,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 5110649033303490019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3031, y: 0.3031, z: 0.3031}
   m_Children:
   - {fileID: 5110649032617674421}
   - {fileID: 5110649033078107066}
@@ -213,7 +213,9 @@ MonoBehaviour:
   teleportImmediately: 0
   teleportCooldown: 1
   outline: {fileID: 5110649033078107067}
---- !u!61 &8302967286159603610
+  platform: {fileID: 0}
+  platforms: []
+--- !u!61 &206718947791436988
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,10 +231,10 @@ BoxCollider2D:
   m_Offset: {x: -0.06645584, y: -0.016613841}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.18, y: 7.56}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0

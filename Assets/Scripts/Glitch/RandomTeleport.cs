@@ -7,12 +7,15 @@ public class RandomTeleport : MonoBehaviour
     public bool teleportImmediately = false;
     public int teleportCooldown = 3;
     public GameObject outline;
+    public GameObject platform;
+    public GameObject[] platforms;
 
     private bool outlineTeleported = false;
 
     void Start()
     {
-        // transform.position = new Vector3(0, 0, 0);
+        platform = getNextPlatform();
+        transform.position = getNextPos();
         InvokeRepeating("Teleport", teleportImmediately ? 0.001f : teleportCooldown, teleportCooldown);
     }
 
@@ -26,8 +29,30 @@ public class RandomTeleport : MonoBehaviour
         }
         else
         {
-            outline.transform.position = new Vector3(outline.transform.position.x + .5f, outline.transform.position.y + .5f, outline.transform.position.z);
+            outline.transform.position = getNextPos();
             outlineTeleported = true;
+            platform = getNextPlatform();
         }
+    }
+
+    Vector3 getNextPos()
+    {
+        return platform ? platform.transform.position : transform.position;
+    }
+
+    GameObject getNextPlatform()
+    {
+        if (platforms.Length == 1)
+        {
+            return platforms[0];
+        }
+
+        // make sure we don't just choose the same platform
+        GameObject next = platform;
+        while (next == platform)
+        {
+            platform = platforms[Random.Range(0, platforms.Length)];
+        }
+        return platform;
     }
 }
