@@ -15,7 +15,6 @@ public class RandomTeleport : MonoBehaviour
     void Start()
     {
         platform = getNextPlatform();
-        transform.position = getNextPos();
         InvokeRepeating("Teleport", teleportImmediately ? 0.001f : teleportCooldown, teleportCooldown);
     }
 
