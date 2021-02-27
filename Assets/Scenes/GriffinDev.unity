@@ -546,6 +546,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5110649033303490017, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
+      propertyPath: platformList
+      value: 
+      objectReference: {fileID: 812263754}
+    - target: {fileID: 5110649033303490017, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
       propertyPath: teleportImmediately
       value: 0
       objectReference: {fileID: 0}
