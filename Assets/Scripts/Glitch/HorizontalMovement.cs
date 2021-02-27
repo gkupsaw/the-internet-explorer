@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class HorizontalMovement : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
+    public Sprite leftSprite;
+    public Sprite rightSprite;
+
     public GameObject platform;
     public float movementDelay = .1f; // seconds
     public float movementSpeed = 1; // units/second
@@ -11,6 +15,7 @@ public class HorizontalMovement : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer.sprite = facingRight ? rightSprite : leftSprite;
         transform.position = platform.transform.position;
         InvokeRepeating("Move", movementDelay, movementDelay);
     }
@@ -30,11 +35,13 @@ public class HorizontalMovement : MonoBehaviour
         if (facingRight && nextX > platformRight)
         {
             facingRight = false;
+            spriteRenderer.sprite = leftSprite;
             nextX = platformRight;
         }
         else if (!facingRight && nextX < platformLeft)
         {
             facingRight = true;
+            spriteRenderer.sprite = rightSprite;
             nextX = platformLeft;
         }
 

@@ -13,6 +13,7 @@ public class SpawnEnemies : MonoBehaviour
         if (Random.Range(0, enemySpawnProb) == 0)
         {
             GameObject e = Instantiate(enemy);
+            e.GetComponent<RandomTeleport>().platform = null;//platform;
             e.GetComponent<RandomTeleport>().platforms = new GameObject[0];//platforms;
             if (enemyTwin)
             {
