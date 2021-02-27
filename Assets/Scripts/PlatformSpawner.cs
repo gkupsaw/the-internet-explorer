@@ -7,6 +7,10 @@ using Random = UnityEngine.Random;
 public class PlatformSpawner : MonoBehaviour
 {
 
+    // TODO
+    // add free-fall fail-safe; pause player movement if drops below view 
+    // constant movement
+
     public GameObject platformBlockPrefab;
     public int platformsSpawned;
 
@@ -85,30 +89,26 @@ public class PlatformSpawner : MonoBehaviour
     }
 
     void generateNewLevel(float height) {
-        int carveGapStartBlock = Random.Range(0, levelWidth - 1);
+        // int carveGapStartBlock = Random.Range(0, levelWidth - 1);
 
         // randomly adjust height between bottom level and underground
         for (int i = 0; i < levelWidth; i++) 
         {
-            // int numOfBlocksToSpawn = (int) (this.levelWidth * this.blockSpawnRate);
-            // int aRandomValue = Random.Range(1, numOfBlocksToSpawn - 1);
-            // bool shouldSpawn = (aRandomValue == 0);
-            // bool shouldSpawn = Random.Range(0, 1) < this.blockSpawnRate;
+            bool shouldSpawn = (Random.Range(0, 10) <= this.blockSpawnRate * 10);
             
-            // print("aRandomValue: " + aRandomValue);
-            // if (!shouldSpawn) {
-            //     continue;
-            // }
-
-            // float maxHeight = height + this.levelHeightDifference / 2;
-            // float randomHeight = Random.Range(height, maxHeight);
-            // GameObject tile = createTile(i, randomHeight);
-            //
-            if ((i == carveGapStartBlock) || (i == carveGapStartBlock + 1)) 
-            {
+            if (!shouldSpawn) {
                 continue;
             }
-            GameObject tile = createTile(i, height);
+
+            float maxHeight = height + this.levelHeightDifference / 2;
+            float randomHeight = Random.Range(height, maxHeight);
+            GameObject tile = createTile(i, randomHeight);
+            //
+            // if ((i == carveGapStartBlock) || (i == carveGapStartBlock + 1)) 
+            // {
+            //     continue;
+            // }
+            // GameObject tile = createTile(i, height);
             allTiles.Add(tile);
         }
         this.triggerBlock = allTiles[allTiles.Count - 1];
