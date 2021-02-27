@@ -50,8 +50,8 @@ public class RandomTeleport : MonoBehaviour
         GameObject next = platform;
         while (next == platform)
         {
-            platform = platforms[Random.Range(0, platforms.Length)];
+            next = platforms[Random.Range(0, platforms.Length)];
         }
-        return platform;
+        return next;
     }
 }
