@@ -15,8 +15,7 @@ public class RandomTeleport : MonoBehaviour
     void Start()
     {
         platform = getNextPlatform();
-        transform.position = spiderGetNextPos();
-        // transform.position = new Vector3(platform.transform.position.x, platform.transform.position.y + .5f, platform.transform.position.z);
+        transform.position = getNextPos();
         InvokeRepeating("Teleport", teleportImmediately ? 0.001f : teleportCooldown, teleportCooldown);
     }
 
@@ -30,24 +29,30 @@ public class RandomTeleport : MonoBehaviour
         }
         else
         {
-            outline.transform.position = spiderGetNextPos();
+            outline.transform.position = getNextPos();
             outlineTeleported = true;
+            platform = getNextPlatform();
         }
     }
 
-    // Vector3 goombaGetNextPos()
-    // {
-    //     float range = platform.GetComponent<Renderer>().bounds.size.x;
-    //     return new Vector3(Random.Range(-range / 2, range / 2), platform.transform.position.y, platform.transform.position.z);
-    // }
-
-    Vector3 spiderGetNextPos()
+    Vector3 getNextPos()
     {
         return platform ? platform.transform.position : transform.position;
     }
 
     GameObject getNextPlatform()
     {
-        return platforms[Random.Range(0, platforms.Length)];
+        if (platforms.Length == 1)
+        {
+            return platforms[0];
+        }
+
+        // make sure we don't just choose the same platform
+        GameObject next = platform;
+        while (next == platform)
+        {
+            platform = platforms[Random.Range(0, platforms.Length)];
+        }
+        return platform;
     }
 }

@@ -237,6 +237,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 19a036664e9fd4e2d9f77dae6f56009d, type: 3}
+    - target: {fileID: 1066491506298314330, guid: ef5b9cb86e8d44e5e99c21da5fb42131, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1066491506298314331, guid: ef5b9cb86e8d44e5e99c21da5fb42131, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -293,30 +297,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ad
       objectReference: {fileID: 0}
-    - target: {fileID: 1066491506298314333, guid: ef5b9cb86e8d44e5e99c21da5fb42131, type: 3}
-      propertyPath: m_Size.x
-      value: 7.743037
-      objectReference: {fileID: 0}
-    - target: {fileID: 1066491506298314333, guid: ef5b9cb86e8d44e5e99c21da5fb42131, type: 3}
-      propertyPath: m_Size.y
-      value: 4.6892
-      objectReference: {fileID: 0}
-    - target: {fileID: 1066491506298314333, guid: ef5b9cb86e8d44e5e99c21da5fb42131, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.051239014
-      objectReference: {fileID: 0}
-    - target: {fileID: 1066491506298314333, guid: ef5b9cb86e8d44e5e99c21da5fb42131, type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1066491506298314333, guid: ef5b9cb86e8d44e5e99c21da5fb42131, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 7.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 1066491506298314333, guid: ef5b9cb86e8d44e5e99c21da5fb42131, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 4.7
-      objectReference: {fileID: 0}
     - target: {fileID: 8234834784463883436, guid: ef5b9cb86e8d44e5e99c21da5fb42131, type: 3}
       propertyPath: m_BodyType
       value: 0
@@ -336,7 +316,7 @@ GameObject:
   - component: {fileID: 847940861}
   m_Layer: 0
   m_Name: WalkingGlitch
-  m_TagString: Untagged
+  m_TagString: Glitch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,7 +328,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847940860}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01e7d7027ac004362ba8c920fe45211a, type: 3}
   m_Name: 
@@ -433,6 +413,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5110649032617674422, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
+      propertyPath: m_Size.x
+      value: 13.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110649032617674422, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
+      propertyPath: m_Size.y
+      value: 12.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110649032617674422, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5110649032617674424, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
       propertyPath: m_Name
       value: Body
@@ -441,13 +433,25 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 5110649033078107065, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
+      propertyPath: m_Size.x
+      value: 13.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110649033078107065, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
+      propertyPath: m_Size.y
+      value: 12.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110649033078107065, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5110649033303490017, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
       propertyPath: platform
       value: 
-      objectReference: {fileID: 1038323060}
+      objectReference: {fileID: 847940860}
     - target: {fileID: 5110649033303490017, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5110649033303490017, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
       propertyPath: platforms.Array.size
@@ -456,7 +460,7 @@ PrefabInstance:
     - target: {fileID: 5110649033303490017, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
       propertyPath: platforms.Array.data[0]
       value: 
-      objectReference: {fileID: 1038323060}
+      objectReference: {fileID: 847940860}
     - target: {fileID: 5110649033303490018, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -487,18 +491,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5110649033303490018, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5110649033303490018, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5110649033303490018, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5110649033303490018, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5110649033303490019, guid: 7888864dc783b4abc9c9d3c07b5e018c, type: 3}
