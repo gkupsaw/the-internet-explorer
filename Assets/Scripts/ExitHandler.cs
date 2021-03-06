@@ -34,7 +34,7 @@ public class ExitHandler : MonoBehaviour
     void OnMouseDown()
     {   
         this.exitButton.transform.position = new Vector2(-10, -10);
-        this.scrollBar.transform.position = new Vector2(scrollStartX, 3.65f);
+        this.scrollBar.transform.position = new Vector3(scrollStartX, 3.65f, -1);
         difficultyFactor++;
         Debug.Log(difficultyFactor);
     }
