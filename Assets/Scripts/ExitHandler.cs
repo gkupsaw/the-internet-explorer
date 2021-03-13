@@ -9,9 +9,13 @@ public class ExitHandler : MonoBehaviour
     public Rigidbody2D scrollBar;
     public bool exitable;
     public Rigidbody2D exitButton;
+    public Rigidbody2D player;
     public bool spawned;
     public float difficultyFactor;
     public float scrollStartX;
+    public Texture2D cursorArrow;
+    public Texture2D cursorHand;
+
     void Start()
     {
         spawned = false;
@@ -31,11 +35,16 @@ public class ExitHandler : MonoBehaviour
             this.exitButton.transform.position = new Vector2(0, -2.5f);
         }
     }
-    void OnMouseDown()
+    void OnMouseDown() //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single)
     {   
         this.exitButton.transform.position = new Vector2(-10, -10);
-        this.scrollBar.transform.position = new Vector2(scrollStartX, 3.65f);
+        this.scrollBar.transform.position = new Vector3(scrollStartX, 3.65f, -1);
+        this.player.transform.position = new Vector2(0, 3);
+        Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
         difficultyFactor++;
         Debug.Log(difficultyFactor);
+    }
+    void OnMouseEnter(){
+        Cursor.SetCursor(cursorHand, Vector2.zero, CursorMode.ForceSoftware);
     }
 }
