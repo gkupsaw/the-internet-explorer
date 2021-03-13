@@ -7,9 +7,10 @@ public class RandomTeleport : MonoBehaviour
     public bool teleportImmediately = false;
     public int teleportCooldown = 3;
     public GameObject outline;
-    private GameObject platform;
-    public GameObject[] platforms;
+    // public GameObject[] platforms;
+    public GameObject platformList;
 
+    private GameObject platform;
     private bool outlineTeleported = false;
 
     void Start()
@@ -41,6 +42,7 @@ public class RandomTeleport : MonoBehaviour
 
     GameObject getNextPlatform()
     {
+        GameObject[] platforms = getPlatforms();
         if (platforms.Length == 1)
         {
             return platforms[0];
@@ -53,5 +55,15 @@ public class RandomTeleport : MonoBehaviour
             next = platforms[Random.Range(0, platforms.Length)];
         }
         return next;
+    }
+
+    GameObject[] getPlatforms()
+    {
+        GameObject[] platforms = new GameObject[platformList.transform.childCount];
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            platforms[i] = platformList.transform.GetChild(i).gameObject;
+        }
+        return platforms;
     }
 }
