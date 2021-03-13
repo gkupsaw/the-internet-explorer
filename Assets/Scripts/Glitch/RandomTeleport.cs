@@ -7,7 +7,7 @@ public class RandomTeleport : MonoBehaviour
     public bool teleportImmediately = false;
     public int teleportCooldown = 3;
     public GameObject outline;
-    public GameObject platform;
+    private GameObject platform;
     public GameObject[] platforms;
 
     private bool outlineTeleported = false;
@@ -50,8 +50,8 @@ public class RandomTeleport : MonoBehaviour
         GameObject next = platform;
         while (next == platform)
         {
-            platform = platforms[Random.Range(0, platforms.Length)];
+            next = platforms[Random.Range(0, platforms.Length)];
         }
-        return platform;
+        return next;
     }
 }
