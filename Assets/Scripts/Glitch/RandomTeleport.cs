@@ -60,7 +60,8 @@ public class RandomTeleport : MonoBehaviour
     GameObject[] getPlatforms()
     {
         GameObject[] platforms = new GameObject[platformList.transform.childCount];
-        for (int i = 0; i < transform.childCount; i++)
+        // for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < platformList.transform.childCount; i++)
         {
             platforms[i] = platformList.transform.GetChild(i).gameObject;
         }
