@@ -5,6 +5,7 @@ using UnityEngine;
 public class Collision : MonoBehaviour
 {
     // Start is called before the first frame update
+    
     void Start()
     {
         
@@ -14,5 +15,8 @@ public class Collision : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnTriggerEnter2D(Collider2D collider){ //subtract user lives
+        Debug.Log("collided");
     }
 }
