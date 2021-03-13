@@ -1,4 +1,4 @@
-using System; 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +8,7 @@ public class PlatformSpawner : MonoBehaviour
 {
 
     // TODO
-    // add free-fall fail-safe; pause player movement if drops below view 
+    // add free-fall fail-safe; pause player movement if drops below view
     // constant movement
 
     public GameObject platformBlockPrefab;
@@ -31,6 +31,8 @@ public class PlatformSpawner : MonoBehaviour
 
     float levelMoveSpeed = 3.5f;
     float levelSpawnRateModifier = 0.3f;
+
+    public GameObject enemySpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -63,19 +65,19 @@ public class PlatformSpawner : MonoBehaviour
         generateNewLevel(undergroundLevelYPos);
     }
 
-    void moveUp() 
+    void moveUp()
     {
         float step = levelMoveSpeed * Time.deltaTime; // calculate distance to move
-        foreach (GameObject tile in allTiles) 
+        foreach (GameObject tile in allTiles)
         {
-            tile.transform.Translate (Vector3.up * Time.deltaTime * levelMoveSpeed); 
+            tile.transform.Translate (Vector3.up * Time.deltaTime * levelMoveSpeed);
         }
     }
 
     void generateNewLevel(float height) {
         // int carveGapStartBlock = Random.Range(0, levelWidth - 1);
         // randomly adjust height between bottom level and underground
-        // if ((i == carveGapStartBlock) || (i == carveGapStartBlock + 1)) 
+        // if ((i == carveGapStartBlock) || (i == carveGapStartBlock + 1))
         // {
         //     continue;
         // }
@@ -84,10 +86,10 @@ public class PlatformSpawner : MonoBehaviour
         // int spawnXBlocks = (int) (Random.Range(1, levelWidth - 1));
         // float initialGap = Random.Range(0, spawnXBlocks * blockPrefabWidth);
 
-        for (int i = 0; i < levelWidth; i++) 
+        for (int i = 0; i < levelWidth; i++)
         {
             bool shouldSpawn = (Random.Range(0, 10) <= this.blockSpawnRate * 10);
-            
+
             if (!shouldSpawn) {
                 continue;
             }
@@ -95,12 +97,13 @@ public class PlatformSpawner : MonoBehaviour
             float maxHeight = height + this.levelHeightDifference / 2;
             float randomHeight = Random.Range(height, maxHeight);
             GameObject tile = createTile(i, randomHeight);
-            
+            enemySpawner.GetComponent<SpawnEnemies>().SpawnEnemyAdPair();
+
             allTiles.Add(tile);
         }
     }
 
-    GameObject createTile(int xBlock, float yPos) 
+    GameObject createTile(int xBlock, float yPos)
     {
         // double startingPoint = blockPrefabWidth * (levelWidth / 2) * (-1);
         double startingPoint = Camera.main.ViewportToWorldPoint(new Vector3(0,1,0)).x;
@@ -113,7 +116,7 @@ public class PlatformSpawner : MonoBehaviour
         // RectTransform tileRT = tile.GetComponent<RectTransform>();
         // tileRT.sizeDelta = new Vector2(1, 10);
         // tile.RectTransform.sizeDelta = new Vector2(1, 2);
-        
+
         tile.transform.SetParent(this.platformObj.transform);
         return tile;
     }

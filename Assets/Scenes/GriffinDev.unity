@@ -646,6 +646,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7053716625757516302, guid: 8635492f9b7394277baa3cd200dfc83b, type: 3}
+      propertyPath: enemySpawner
+      value: 
+      objectReference: {fileID: 1920249197}
+    - target: {fileID: 7053716625757516302, guid: 8635492f9b7394277baa3cd200dfc83b, type: 3}
+      propertyPath: platformBlockPrefab
+      value: 
+      objectReference: {fileID: 9221734986442258783, guid: 5ed389e7d0a5446baab9428b06851a51, type: 3}
     - target: {fileID: 7053716625757516303, guid: 8635492f9b7394277baa3cd200dfc83b, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1152,6 +1160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
+--- !u!1 &1920249197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5569845657444768879, guid: 03b8ff78b1ac549d18ae6a4e5b834147, type: 3}
+  m_PrefabInstance: {fileID: 3094191017095463506}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3094191017095463506
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
-    public int enemySpawnProb = 5;
+    public int enemySpawnProb = 1;
     public GameObject ad;
     public GameObject[] enemies;
 
@@ -14,34 +14,33 @@ public class SpawnEnemies : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("SpawnEnemyAdPair", 0, 1);
+        // InvokeRepeating("SpawnEnemyAdPair", 0, 1);
     }
 
-    void SpawnEnemyAdPair()
+    public void SpawnEnemyAdPair()
     {
         if (Random.Range(0, enemySpawnProb) == 0)
         {
             GameObject e = Instantiate(ChooseEnemy());
             e.transform.SetParent(enemiesParent.transform);
 
+            GameObject a = Instantiate(ad);
+            a.transform.position = new Vector3(a.transform.position.x, a.transform.position.y+3,a.transform.position.z);
+            a.transform.SetParent(adsParent.transform);
+
             if (e.tag == "WalkingGlitch")
             {
                 e.GetComponent<HorizontalMovement>().platform = ChoosePlatform();
-                // GameObject a = Instantiate(ad);
-                // a.transform.position = new Vector3(a.transform.position.x, a.transform.position.y+3,a.transform.position.z);
-                // a.transform.SetParent(adsParent);
             }
             else if (e.tag == "TeleportingGlitch")
             {
                 e.GetComponent<RandomTeleport>().platformList = platformsParent;
-                // GameObject a = Instantiate(ad);
-                // a.transform.position = new Vector3(a.transform.position.x, a.transform.position.y+3,a.transform.position.z);
-                // a.transform.SetParent(adsParent);
             }
             else
             {
                 Debug.Log("Invalid enemy tag");
                 Destroy(e);
+                Destroy(a);
             }
         }
     }
