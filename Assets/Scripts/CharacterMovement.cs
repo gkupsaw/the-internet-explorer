@@ -15,7 +15,7 @@ public class CharacterMovement : MonoBehaviour
     public float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 
     float m_MovementSmoothing = .05f;	// How much to smooth out the movement
-    bool m_FacingRight = true;  // For determining which way the player is currently facing.
+    bool m_FacingRight = false;  // For determining which way the player is currently facing.
     Vector3 m_Velocity = Vector3.zero;
     bool isGrounded;
     bool jump;
