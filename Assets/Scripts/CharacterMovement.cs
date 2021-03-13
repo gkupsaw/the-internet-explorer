@@ -19,6 +19,12 @@ public class CharacterMovement : MonoBehaviour
     Vector3 m_Velocity = Vector3.zero;
     bool isGrounded;
     bool jump;
+    public Sprite one;
+    public Sprite two;
+    public Sprite three;
+    public Sprite four;
+    public Sprite five;
+    int timer = 0;
 
     float horizontalMove = 0f;
 
@@ -37,6 +43,26 @@ public class CharacterMovement : MonoBehaviour
         {
             jump = true;
         }
+        // if (timer == 0) {
+        //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = one;
+        //     timer++;
+        // }
+        // else if (timer == 1){
+        //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = two;
+        //     timer++;
+        // }
+        // else if (timer == 2){
+        //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = three;
+        //     timer++;
+        // }
+        // else if (timer == 3){
+        //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = four;
+        //     timer++;
+        // }
+        // else if (timer == 4){
+        //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = five;
+        //     timer = 0;
+        // }
     }
 
     void FixedUpdate()
