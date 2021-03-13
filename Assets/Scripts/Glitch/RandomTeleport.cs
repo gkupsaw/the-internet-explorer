@@ -16,8 +16,11 @@ public class RandomTeleport : MonoBehaviour
     void Start()
     {
         platform = getNextPlatform();
+
+        // teleport to intitial position
         Teleport();
         Teleport();
+
         InvokeRepeating("Teleport", teleportImmediately ? 0.001f : teleportCooldown, teleportCooldown);
     }
 

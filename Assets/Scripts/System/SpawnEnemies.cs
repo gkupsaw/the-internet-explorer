@@ -25,7 +25,9 @@ public class SpawnEnemies : MonoBehaviour
             e.transform.SetParent(enemiesParent.transform);
 
             GameObject a = Instantiate(ad);
-            a.transform.position = new Vector3(a.transform.position.x, a.transform.position.y+3,a.transform.position.z);
+            bool fromLeft = Random.Range(0, 2) == 0;
+            a.transform.position = new Vector3(10 * (fromLeft ? -1 : 1), -6, a.transform.position.z);
+            a.GetComponent<Rigidbody2D>().AddForce(fromLeft ? Vector3.right : Vector3.left, ForceMode2D.Impulse);
             a.transform.SetParent(adsParent.transform);
 
             if (e.tag == "WalkingGlitch")

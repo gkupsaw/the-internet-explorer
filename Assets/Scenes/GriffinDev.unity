@@ -1234,7 +1234,7 @@ PrefabInstance:
       objectReference: {fileID: 1113184445}
     - target: {fileID: 3421825519491197322, guid: 03b8ff78b1ac549d18ae6a4e5b834147, type: 3}
       propertyPath: enemySpawnProb
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3421825519491197322, guid: 03b8ff78b1ac549d18ae6a4e5b834147, type: 3}
       propertyPath: platformsParent
