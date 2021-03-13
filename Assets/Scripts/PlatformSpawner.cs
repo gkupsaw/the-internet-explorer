@@ -29,6 +29,9 @@ public class PlatformSpawner : MonoBehaviour
     List<GameObject> tileTopRow;
     List<GameObject> allTiles;
 
+    // float levelMoveSpeed = 3.0f;
+    // float levelSpawnRateModifier = 0.5f;
+
     float levelMoveSpeed = 3.2f;
     float levelSpawnRateModifier = 0.4f;
 
@@ -86,35 +89,34 @@ public class PlatformSpawner : MonoBehaviour
 
         int spawnXBlocks = (int) (Random.Range(1, levelWidth - 1));
 
-        int blocksLeft;
         float xPos;
         float maxXPos;
         float minXPos;
 
         minXPos = leftMostX;
         minXPos += (float) (blockPrefabWidth / 2);
-        blocksLeft = spawnXBlocks;
-        maxXPos = (float) (rightMostX - blocksLeft * blockPrefabWidth); 
-
+        maxXPos = (float) (rightMostX - spawnXBlocks * blockPrefabWidth); 
 
         if (spawnXBlocks == 1) {
             int leanTowardsValue = Random.Range(0, 4);
             print("lean towards: " + leanTowardsValue);
             if (leanTowardsValue == 0) 
             {
+                // lean towards the left
                 minXPos = leftMostX;
                 maxXPos = leftMostX + (float) blockPrefabWidth;
             } 
             else if (leanTowardsValue == 1) 
             {
-                minXPos = rightMostX - (float) blockPrefabWidth / 2;
-                maxXPos = rightMostX + (float) blockPrefabWidth / 2;
+                // lean towards the right
+                minXPos = rightMostX - (float) blockPrefabWidth;
+                maxXPos = rightMostX;
             }
             else
             {
-                // middle
+                // lean towards the middle
                 minXPos = leftMostX + (float) blockPrefabWidth;
-                maxXPos = rightMostX - (float) blockPrefabWidth / 2;
+                maxXPos = rightMostX - (float) blockPrefabWidth;
             }
         }
 
@@ -122,14 +124,13 @@ public class PlatformSpawner : MonoBehaviour
         // print("camera: " + minXPos + "~" + rightMostX);
         // print("first block spawns at: " + xPos);
 
-        for (int i = 0; i < spawnXBlocks; i++) {
+        for (int blocksLeft = spawnXBlocks - 1; spawnXBlocks >= 0; spawnXBlocks--) {
 
             float maxHeight = height + this.levelHeightDifference / 2;
             float randomHeight = Random.Range(height, maxHeight);
 
             allTiles.Add(createTile(xPos, randomHeight));
 
-            blocksLeft--;
             minXPos = xPos + (float) blockPrefabWidth;
             maxXPos = (float) (rightMostX - blocksLeft * blockPrefabWidth); 
             xPos = Random.Range(minXPos, maxXPos);
