@@ -13,6 +13,7 @@ public class PlatformSpawner : MonoBehaviour
 
     public GameObject platformBlockPrefab;
     public int platformsSpawned;
+    public GameObject enemySpawner;
 
     int levelWidth = 4;
     float topLevelYPos = 2.2f;
@@ -31,8 +32,6 @@ public class PlatformSpawner : MonoBehaviour
 
     float levelMoveSpeed = 3.5f;
     float levelSpawnRateModifier = 0.3f;
-
-    public GameObject enemySpawner;
 
     // Start is called before the first frame update
     void Start()
