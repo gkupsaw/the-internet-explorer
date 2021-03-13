@@ -16,6 +16,7 @@ public class ExitHandler : MonoBehaviour
     public Texture2D cursorArrow;
     public Texture2D cursorHand;
 
+
     void Start()
     {
         spawned = false;
@@ -41,6 +42,9 @@ public class ExitHandler : MonoBehaviour
         this.scrollBar.transform.position = new Vector3(scrollStartX, 3.65f, -1);
         this.player.transform.position = new Vector2(0, 3);
         Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
+        GameObject go = GameObject.Find("Score");
+        ScoreManager score = go.GetComponent<ScoreManager>();
+        score.scoreCount = score.scoreCount + 100;
         difficultyFactor++;
         Debug.Log(difficultyFactor);
     }

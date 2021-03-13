@@ -39,4 +39,8 @@ public class ShadowGlitchMvmt : MonoBehaviour
         this.shadowGlitch.gameObject.GetComponent<SpriteRenderer>().sprite = leftFace;
         this.shadowGlitch.velocity = new Vector2(-2.5f, 0);
     }
+
+    private void OnTriggerEnter2D(Collider2D collider){ //subtract user lives
+        Debug.Log("collided");
+    }
 }
