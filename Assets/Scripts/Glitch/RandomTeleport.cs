@@ -16,10 +16,12 @@ public class RandomTeleport : MonoBehaviour
     void Start()
     {
         platform = getNextPlatform();
+        Teleport();
+        Teleport();
         InvokeRepeating("Teleport", teleportImmediately ? 0.001f : teleportCooldown, teleportCooldown);
     }
 
-    void Teleport()
+    public void Teleport()
     {
         if (outlineTeleported)
         {
