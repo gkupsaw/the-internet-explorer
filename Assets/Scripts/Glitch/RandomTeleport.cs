@@ -39,7 +39,9 @@ public class RandomTeleport : MonoBehaviour
 
     Vector3 getNextPos()
     {
-        return platform ? platform.transform.position : transform.position;
+        return (platform ? platform.transform.position : transform.position)
+                + Vector3.up * (platform.GetComponent<Renderer>().bounds.size.y/2)
+                + Vector3.up * (gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.size.y/2);
     }
 
     GameObject getNextPlatform()
