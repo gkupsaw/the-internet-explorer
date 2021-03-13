@@ -13,6 +13,7 @@ public class PlatformSpawner : MonoBehaviour
 
     public GameObject platformBlockPrefab;
     public int platformsSpawned;
+    public GameObject enemySpawner;
 
     int levelWidth = 3;
     float topLevelYPos = 2.2f;
@@ -29,11 +30,11 @@ public class PlatformSpawner : MonoBehaviour
     List<GameObject> tileTopRow;
     List<GameObject> allTiles;
 
-    // float levelMoveSpeed = 3.0f;
-    // float levelSpawnRateModifier = 0.5f;
+    float levelMoveSpeed = 3.0f;
+    float levelSpawnRateModifier = 0.5f;
 
-    float levelMoveSpeed = 3.2f;
-    float levelSpawnRateModifier = 0.4f;
+    // float levelMoveSpeed = 3.2f;
+    // float levelSpawnRateModifier = 0.4f;
 
     // Start is called before the first frame update
     void Start()
@@ -99,7 +100,7 @@ public class PlatformSpawner : MonoBehaviour
 
         if (spawnXBlocks == 1) {
             int leanTowardsValue = Random.Range(0, 4);
-            print("lean towards: " + leanTowardsValue);
+            // print("lean towards: " + leanTowardsValue);
             if (leanTowardsValue == 0) 
             {
                 // lean towards the left
@@ -142,6 +143,8 @@ public class PlatformSpawner : MonoBehaviour
         Vector3 tilePosition = new Vector3(xPos, yPos, 0);
         GameObject tile = (GameObject) Instantiate(platformBlockPrefab, tilePosition, Quaternion.identity);
         tile.transform.SetParent(this.platformObj.transform);
+        enemySpawner.GetComponent<SpawnEnemies>().SpawnEnemyAdPair();
+
         return tile;
     }
 }

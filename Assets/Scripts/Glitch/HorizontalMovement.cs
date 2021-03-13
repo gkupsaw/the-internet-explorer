@@ -47,6 +47,8 @@ public class HorizontalMovement : MonoBehaviour
             nextX = platformLeft;
         }
 
-        return new Vector3(nextX, transform.position.y, transform.position.z);
+        return new Vector3(nextX,
+                            platform.transform.position.y + platform.GetComponent<Renderer>().bounds.size.y/2 + gameObject.GetComponent<Renderer>().bounds.size.y/2,
+                            transform.position.z);
     }
 }

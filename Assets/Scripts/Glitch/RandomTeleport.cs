@@ -16,10 +16,15 @@ public class RandomTeleport : MonoBehaviour
     void Start()
     {
         platform = getNextPlatform();
+
+        // teleport to intitial position
+        Teleport();
+        Teleport();
+
         InvokeRepeating("Teleport", teleportImmediately ? 0.001f : teleportCooldown, teleportCooldown);
     }
 
-    void Teleport()
+    public void Teleport()
     {
         if (outlineTeleported)
         {
@@ -37,7 +42,9 @@ public class RandomTeleport : MonoBehaviour
 
     Vector3 getNextPos()
     {
-        return platform ? platform.transform.position : transform.position;
+        return (platform ? platform.transform.position : transform.position)
+                + Vector3.up * (platform.GetComponent<Renderer>().bounds.size.y/2)
+                + Vector3.up * (gameObject.transform.GetChild(1).GetComponent<Renderer>().bounds.size.y/2);
     }
 
     GameObject getNextPlatform()
@@ -60,7 +67,8 @@ public class RandomTeleport : MonoBehaviour
     GameObject[] getPlatforms()
     {
         GameObject[] platforms = new GameObject[platformList.transform.childCount];
-        for (int i = 0; i < transform.childCount; i++)
+        // for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < platformList.transform.childCount; i++)
         {
             platforms[i] = platformList.transform.GetChild(i).gameObject;
         }

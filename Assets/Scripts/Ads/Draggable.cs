@@ -27,6 +27,11 @@ public class Draggable : MonoBehaviour
         float planeDist;
         dragPlane.Raycast(camRay, out planeDist);
         offset = transform.position - camRay.GetPoint(planeDist);
+
+        if (GetComponent<Rigidbody2D>() != null)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        }
     }
 
     void OnMouseDrag()
