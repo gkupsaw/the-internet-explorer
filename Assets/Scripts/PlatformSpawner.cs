@@ -14,7 +14,7 @@ public class PlatformSpawner : MonoBehaviour
     public GameObject platformBlockPrefab;
     public int platformsSpawned;
 
-    int levelWidth = 4;
+    int levelWidth = 3;
     float topLevelYPos = 2.2f;
     float bottomLevelYPos = -3.2f;
     float undergroundLevelYPos = -8.2f;
@@ -29,8 +29,8 @@ public class PlatformSpawner : MonoBehaviour
     List<GameObject> tileTopRow;
     List<GameObject> allTiles;
 
-    float levelMoveSpeed = 3.5f;
-    float levelSpawnRateModifier = 0.3f;
+    float levelMoveSpeed = 3.2f;
+    float levelSpawnRateModifier = 0.4f;
 
     // Start is called before the first frame update
     void Start()
@@ -81,39 +81,65 @@ public class PlatformSpawner : MonoBehaviour
         // }
         // GameObject tile = createTile(i, height);
 
-        // int spawnXBlocks = (int) (Random.Range(1, levelWidth - 1));
-        // float initialGap = Random.Range(0, spawnXBlocks * blockPrefabWidth);
+        float leftMostX = Camera.main.ViewportToWorldPoint(new Vector3(0,1,0)).x;
+        float rightMostX = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0)).x;
 
-        for (int i = 0; i < levelWidth; i++) 
-        {
-            bool shouldSpawn = (Random.Range(0, 10) <= this.blockSpawnRate * 10);
-            
-            if (!shouldSpawn) {
-                continue;
+        int spawnXBlocks = (int) (Random.Range(1, levelWidth - 1));
+
+        int blocksLeft;
+        float xPos;
+        float maxXPos;
+        float minXPos;
+
+        minXPos = leftMostX;
+        minXPos += (float) (blockPrefabWidth / 2);
+        blocksLeft = spawnXBlocks;
+        maxXPos = (float) (rightMostX - blocksLeft * blockPrefabWidth); 
+
+
+        if (spawnXBlocks == 1) {
+            int leanTowardsValue = Random.Range(0, 4);
+            print("lean towards: " + leanTowardsValue);
+            if (leanTowardsValue == 0) 
+            {
+                minXPos = leftMostX;
+                maxXPos = leftMostX + (float) blockPrefabWidth;
+            } 
+            else if (leanTowardsValue == 1) 
+            {
+                minXPos = rightMostX - (float) blockPrefabWidth / 2;
+                maxXPos = rightMostX + (float) blockPrefabWidth / 2;
             }
+            else
+            {
+                // middle
+                minXPos = leftMostX + (float) blockPrefabWidth;
+                maxXPos = rightMostX - (float) blockPrefabWidth / 2;
+            }
+        }
+
+        xPos = Random.Range(minXPos, maxXPos);
+        // print("camera: " + minXPos + "~" + rightMostX);
+        // print("first block spawns at: " + xPos);
+
+        for (int i = 0; i < spawnXBlocks; i++) {
 
             float maxHeight = height + this.levelHeightDifference / 2;
             float randomHeight = Random.Range(height, maxHeight);
-            GameObject tile = createTile(i, randomHeight);
-            
-            allTiles.Add(tile);
+
+            allTiles.Add(createTile(xPos, randomHeight));
+
+            blocksLeft--;
+            minXPos = xPos + (float) blockPrefabWidth;
+            maxXPos = (float) (rightMostX - blocksLeft * blockPrefabWidth); 
+            xPos = Random.Range(minXPos, maxXPos);
         }
     }
 
-    GameObject createTile(int xBlock, float yPos) 
+    GameObject createTile(float xPos, float yPos) 
     {
-        // double startingPoint = blockPrefabWidth * (levelWidth / 2) * (-1);
-        double startingPoint = Camera.main.ViewportToWorldPoint(new Vector3(0,1,0)).x;
-        // double startingPoint = 0;
-        double xPos = startingPoint + (blockPrefabWidth) * xBlock;
-        Vector3 tilePosition = new Vector3(Convert.ToSingle(xPos), yPos, 0);
+        Vector3 tilePosition = new Vector3(xPos, yPos, 0);
         GameObject tile = (GameObject) Instantiate(platformBlockPrefab, tilePosition, Quaternion.identity);
-
-        // tile.transform.localscale.y = 10;
-        // RectTransform tileRT = tile.GetComponent<RectTransform>();
-        // tileRT.sizeDelta = new Vector2(1, 10);
-        // tile.RectTransform.sizeDelta = new Vector2(1, 2);
-        
         tile.transform.SetParent(this.platformObj.transform);
         return tile;
     }
