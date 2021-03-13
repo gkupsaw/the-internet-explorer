@@ -7,6 +7,7 @@ public class SpawnEnemies : MonoBehaviour
     public int enemySpawnProb = 5;
     public GameObject enemy;
     public GameObject enemyTwin;
+    public GameObject platformList;
 
     void Update()
     {
@@ -14,7 +15,7 @@ public class SpawnEnemies : MonoBehaviour
         {
             GameObject e = Instantiate(enemy);
             // e.GetComponent<RandomTeleport>().platform = null;//platform;
-            e.GetComponent<RandomTeleport>().platforms = new GameObject[0];//platforms;
+            e.GetComponent<RandomTeleport>().platformList = platformList;
             if (enemyTwin)
             {
                 Instantiate(enemyTwin);
