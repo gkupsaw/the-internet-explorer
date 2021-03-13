@@ -128,6 +128,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5668884924149907138, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
   m_PrefabInstance: {fileID: 1585176222}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &60800819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60800818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674327107391043ca9f7b1100f0df2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 3
+  player: {fileID: 150277985}
 --- !u!114 &60800824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +257,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523704621}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -692,6 +706,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7053716625757516302, guid: 8635492f9b7394277baa3cd200dfc83b, type: 3}
+      propertyPath: platformBlockPrefab
+      value: 
+      objectReference: {fileID: 9221734986442258783, guid: 5ed389e7d0a5446baab9428b06851a51, type: 3}
     - target: {fileID: 7053716625757516303, guid: 8635492f9b7394277baa3cd200dfc83b, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1044,7 +1062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1276158427967769665, guid: d6afd5bbb1741470bb237aae42cd9e4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1276158427967769665, guid: d6afd5bbb1741470bb237aae42cd9e4f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1093,11 +1111,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2707346342203347806, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.12
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 2707346342203347806, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 5.31
       objectReference: {fileID: 0}
     - target: {fileID: 2707346342203347806, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
       propertyPath: m_LocalPosition.z
