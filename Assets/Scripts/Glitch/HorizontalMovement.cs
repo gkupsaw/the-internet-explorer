@@ -16,15 +16,25 @@ public class HorizontalMovement : MonoBehaviour
     void Start()
     {
         spriteRenderer.sprite = facingRight ? rightSprite : leftSprite;
-        transform.position = new Vector3(platform.transform.position.x,
+        if (platform)
+        {
+            transform.position = new Vector3(platform.transform.position.x,
                                             platform.transform.position.y + platform.GetComponent<Renderer>().bounds.size.y/2 + gameObject.GetComponent<Renderer>().bounds.size.y/2,
                                             platform.transform.position.z);
+        }
         InvokeRepeating("Move", movementDelay, movementDelay);
     }
 
     void Move()
     {
-        transform.position = getNextPos();
+        if (platform)
+        {
+            transform.position = getNextPos();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     Vector3 getNextPos()

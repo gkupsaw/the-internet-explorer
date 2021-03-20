@@ -26,6 +26,11 @@ public class RandomTeleport : MonoBehaviour
 
     public void Teleport()
     {
+        if (!platform)
+        {
+            platform = getNextPlatform();
+        }
+
         if (outlineTeleported)
         {
             transform.position = outline.transform.position;

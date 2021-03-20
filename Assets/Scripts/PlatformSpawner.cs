@@ -72,7 +72,8 @@ public class PlatformSpawner : MonoBehaviour
         float step = levelMoveSpeed * Time.deltaTime; // calculate distance to move
         foreach (GameObject tile in allTiles)
         {
-            tile.transform.Translate (Vector3.up * Time.deltaTime * levelMoveSpeed);
+            if (tile)
+                tile.transform.Translate (Vector3.up * Time.deltaTime * levelMoveSpeed);
         }
     }
 
