@@ -19,7 +19,7 @@ public class LifeManager : MonoBehaviour
     {
         if (lives == 0){
             // Debug.Log("GAME OVER!");
-            // SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("GameOver");
         }
         if (this.player.position.y > 7.8f || this.player.position.y < -6.5f || this.player.position.x > 12.5f || this.player.position.x < -12.5f){
             lives--;
