@@ -49,28 +49,6 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0){
             characterScale.x = -5;
         }
-        // if (timer >= 0 && timer < 100) {
-        //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = one;
-        //     timer++;
-        // }
-        // else if (timer == 100 && timer < 200){
-        //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = two;
-        //     timer++;
-        // }
-        // else if (timer == 200 && timer < 300){
-        //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = three;
-        //     timer++;
-        // }
-        // else if (timer == 400 && timer < 500){
-        //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = four;
-        //     timer++;
-        // }
-        // else if (timer >= 500 && timer < 600){
-        //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = five;
-        // } else {
-        //     timer = 0;
-        // }
-        // Debug.Log(timer);
     }
 
     void FixedUpdate()
