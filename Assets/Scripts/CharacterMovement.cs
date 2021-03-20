@@ -25,7 +25,6 @@ public class CharacterMovement : MonoBehaviour
     public Sprite four;
     public Sprite five;
     int timer = 0;
-
     float horizontalMove = 0f;
 
     // Start is called before the first frame update
@@ -43,26 +42,35 @@ public class CharacterMovement : MonoBehaviour
         {
             jump = true;
         }
-        // if (timer == 0) {
+        Vector3 characterScale = transform.localScale; 
+        if (Input.GetAxis("Horizontal") < 0) {
+            characterScale.x = 5; //initial file is facing left
+        }
+        if (Input.GetAxis("Horizontal") > 0){
+            characterScale.x = -5;
+        }
+        // if (timer >= 0 && timer < 100) {
         //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = one;
         //     timer++;
         // }
-        // else if (timer == 1){
+        // else if (timer == 100 && timer < 200){
         //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = two;
         //     timer++;
         // }
-        // else if (timer == 2){
+        // else if (timer == 200 && timer < 300){
         //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = three;
         //     timer++;
         // }
-        // else if (timer == 3){
+        // else if (timer == 400 && timer < 500){
         //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = four;
         //     timer++;
         // }
-        // else if (timer == 4){
+        // else if (timer >= 500 && timer < 600){
         //     this.body.gameObject.GetComponent<SpriteRenderer>().sprite = five;
+        // } else {
         //     timer = 0;
         // }
+        // Debug.Log(timer);
     }
 
     void FixedUpdate()

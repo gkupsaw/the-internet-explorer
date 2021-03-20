@@ -166,6 +166,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2707346342203347806, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
   m_PrefabInstance: {fileID: 424319703}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &44337142
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44337132}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 79f49c18557824f2e97d2b247c414269, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &161968924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -306,6 +325,26 @@ PrefabInstance:
       propertyPath: m_SpriteTileMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4871428887420525092, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
+      propertyPath: one
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f8bef3ca257642b7adf54d838070b2d, type: 3}
+    - target: {fileID: 4871428887420525092, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
+      propertyPath: two
+      value: 
+      objectReference: {fileID: 21300000, guid: 2330b1ae418014040bca16fc62df4c52, type: 3}
+    - target: {fileID: 4871428887420525092, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
+      propertyPath: five
+      value: 
+      objectReference: {fileID: 21300000, guid: a94046e177c6c49fb87fe7147ab2fda6, type: 3}
+    - target: {fileID: 4871428887420525092, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
+      propertyPath: four
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f7c1f0d8dbd3445d94877e831881645, type: 3}
+    - target: {fileID: 4871428887420525092, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
+      propertyPath: three
+      value: 
+      objectReference: {fileID: 21300000, guid: 6935cc8f92e404cc49ba389d3ae3229e, type: 3}
     - target: {fileID: 4871428887420525092, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
       propertyPath: gravityScale
       value: 1
@@ -954,6 +993,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 917647674}
     m_Modifications:
+    - target: {fileID: 7598040365503925220, guid: cc8d942e0ea2a4aa4a2d0b7df35f4a96, type: 3}
+      propertyPath: m_margin.z
+      value: -52.92157
+      objectReference: {fileID: 0}
+    - target: {fileID: 7598040365503925220, guid: cc8d942e0ea2a4aa4a2d0b7df35f4a96, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 253457823a9464e2fbeca442643250f9, type: 2}
+    - target: {fileID: 7598040365503925220, guid: cc8d942e0ea2a4aa4a2d0b7df35f4a96, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2526367255481488446, guid: 253457823a9464e2fbeca442643250f9, type: 2}
     - target: {fileID: 7598040365503925221, guid: cc8d942e0ea2a4aa4a2d0b7df35f4a96, type: 3}
       propertyPath: m_Pivot.x
       value: 6.693371
@@ -964,7 +1015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7598040365503925221, guid: cc8d942e0ea2a4aa4a2d0b7df35f4a96, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7598040365503925221, guid: cc8d942e0ea2a4aa4a2d0b7df35f4a96, type: 3}
       propertyPath: m_AnchorMax.x
