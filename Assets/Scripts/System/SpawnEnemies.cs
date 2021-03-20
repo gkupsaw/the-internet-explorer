@@ -6,6 +6,7 @@ public class SpawnEnemies : MonoBehaviour
 {
     public int enemySpawnProb = 1;
     public GameObject ad;
+    public Sprite[] adGraphics;
     public GameObject[] enemies;
 
     public GameObject platformsParent;
@@ -29,6 +30,7 @@ public class SpawnEnemies : MonoBehaviour
             a.transform.position = new Vector3(10 * (fromLeft ? -1 : 1), -6, a.transform.position.z);
             float thrust = Random.Range(0, 50) / 10;
             a.GetComponent<Rigidbody2D>().AddForce(thrust * (fromLeft ? Vector3.right : Vector3.left), ForceMode2D.Impulse);
+            a.GetComponent<SpriteRenderer>().sprite = ChooseAdGraphic();
             a.transform.SetParent(adsParent.transform);
 
             if (e.tag == "WalkingGlitch")
@@ -51,6 +53,11 @@ public class SpawnEnemies : MonoBehaviour
     GameObject ChooseEnemy()
     {
         return enemies[Random.Range(0, enemies.Length)];
+    }
+
+    Sprite ChooseAdGraphic()
+    {
+        return adGraphics[Random.Range(0, adGraphics.Length)];
     }
 
     GameObject ChoosePlatform()
