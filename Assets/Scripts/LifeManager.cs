@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LifeManager : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class LifeManager : MonoBehaviour
     void Update()
     {
         if (lives == 0){
-            Debug.Log("GAME OVER!");
+            // Debug.Log("GAME OVER!");
+            SceneManager.LoadScene("GameOver");
         }
         if (this.player.position.y > 7.8f || this.player.position.y < -6.5f || this.player.position.x > 12.5f || this.player.position.x < -12.5f){
             lives--;
