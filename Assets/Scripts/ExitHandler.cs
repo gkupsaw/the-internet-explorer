@@ -37,7 +37,7 @@ public class ExitHandler : MonoBehaviour
         }
     }
     void OnMouseDown() //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single)
-    {   
+    {
         this.exitButton.transform.position = new Vector2(-10, -10);
         this.scrollBar.transform.position = new Vector3(scrollStartX, 3.65f, -1);
         this.player.transform.position = new Vector2(0, 3);
@@ -47,6 +47,9 @@ public class ExitHandler : MonoBehaviour
         score.scoreCount = score.scoreCount + 100;
         difficultyFactor++;
         Debug.Log(difficultyFactor);
+
+        GameObject enemySpawner = GameObject.Find("EnemySpawner");
+        enemySpawner.GetComponent<SpawnEnemies>().enemySpawnProb /= 3;
     }
     void OnMouseEnter(){
         Cursor.SetCursor(cursorHand, Vector2.zero, CursorMode.ForceSoftware);
