@@ -206,9 +206,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1830183759}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: playGame
+      - m_Target: {fileID: 1830183760}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: toMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -422,9 +422,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1830183759}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: playGame
+      - m_Target: {fileID: 1830183760}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: exitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1077,7 +1077,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1830183757}
   - component: {fileID: 1830183758}
-  - component: {fileID: 1830183759}
   - component: {fileID: 1830183760}
   m_Layer: 5
   m_Name: GameOverMenu
@@ -1134,18 +1133,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &1830183759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830183756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 047be2c8656a247b4b62856b47892a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1830183760
 MonoBehaviour:
   m_ObjectHideFlags: 0
