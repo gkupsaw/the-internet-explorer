@@ -1,4 +1,4 @@
-using System; 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +8,7 @@ public class PlatformSpawner : MonoBehaviour
 {
 
     // TODO
-    // add free-fall fail-safe; pause player movement if drops below view 
+    // add free-fall fail-safe; pause player movement if drops below view
     // constant movement
 
     public GameObject platformBlockPrefab;
@@ -67,26 +67,26 @@ public class PlatformSpawner : MonoBehaviour
         generateNewLevel(undergroundLevelYPos);
     }
 
-    void moveUp() 
+    void moveUp()
     {
         float step = levelMoveSpeed * Time.deltaTime; // calculate distance to move
-        foreach (GameObject tile in allTiles) 
+        foreach (GameObject tile in allTiles)
         {
-            tile.transform.Translate (Vector3.up * Time.deltaTime * levelMoveSpeed); 
+            tile.transform.Translate (Vector3.up * Time.deltaTime * levelMoveSpeed);
         }
     }
 
     void generateNewLevel(float height) {
         // int carveGapStartBlock = Random.Range(0, levelWidth - 1);
         // randomly adjust height between bottom level and underground
-        // if ((i == carveGapStartBlock) || (i == carveGapStartBlock + 1)) 
+        // if ((i == carveGapStartBlock) || (i == carveGapStartBlock + 1))
         // {
         //     continue;
         // }
         // GameObject tile = createTile(i, height);
 
-        float leftMostX = Camera.main.ViewportToWorldPoint(new Vector3(0,1,0)).x;
-        float rightMostX = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0)).x;
+        float leftMostX = -5f + Camera.main.ViewportToWorldPoint(new Vector3(0,1,0)).x;
+        float rightMostX = -5f + Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0)).x;
 
         int spawnXBlocks = (int) (Random.Range(1, levelWidth - 1));
 
@@ -96,18 +96,18 @@ public class PlatformSpawner : MonoBehaviour
 
         minXPos = leftMostX;
         minXPos += (float) (blockPrefabWidth / 2);
-        maxXPos = (float) (rightMostX - spawnXBlocks * blockPrefabWidth); 
+        maxXPos = (float) (rightMostX - spawnXBlocks * blockPrefabWidth);
 
         if (spawnXBlocks == 1) {
             int leanTowardsValue = Random.Range(0, 4);
             // print("lean towards: " + leanTowardsValue);
-            if (leanTowardsValue == 0) 
+            if (leanTowardsValue == 0)
             {
                 // lean towards the left
                 minXPos = leftMostX;
                 maxXPos = leftMostX + (float) blockPrefabWidth;
-            } 
-            else if (leanTowardsValue == 1) 
+            }
+            else if (leanTowardsValue == 1)
             {
                 // lean towards the right
                 minXPos = rightMostX - (float) blockPrefabWidth;
@@ -133,12 +133,12 @@ public class PlatformSpawner : MonoBehaviour
             allTiles.Add(createTile(xPos, randomHeight));
 
             minXPos = xPos + (float) blockPrefabWidth;
-            maxXPos = (float) (rightMostX - blocksLeft * blockPrefabWidth); 
+            maxXPos = (float) (rightMostX - blocksLeft * blockPrefabWidth);
             xPos = Random.Range(minXPos, maxXPos);
         }
     }
 
-    GameObject createTile(float xPos, float yPos) 
+    GameObject createTile(float xPos, float yPos)
     {
         Vector3 tilePosition = new Vector3(xPos, yPos, 0);
         GameObject tile = (GameObject) Instantiate(platformBlockPrefab, tilePosition, Quaternion.identity);
