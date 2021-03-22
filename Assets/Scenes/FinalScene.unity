@@ -322,6 +322,10 @@ PrefabInstance:
       value: 0.35299543
       objectReference: {fileID: 0}
     - target: {fileID: 4737401053599456130, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f8bef3ca257642b7adf54d838070b2d, type: 3}
+    - target: {fileID: 4737401053599456130, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
       propertyPath: m_SpriteTileMode
       value: 1
       objectReference: {fileID: 0}
@@ -1267,7 +1271,7 @@ PrefabInstance:
       objectReference: {fileID: 1113184445}
     - target: {fileID: 3421825519491197322, guid: 03b8ff78b1ac549d18ae6a4e5b834147, type: 3}
       propertyPath: enemySpawnProb
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3421825519491197322, guid: 03b8ff78b1ac549d18ae6a4e5b834147, type: 3}
       propertyPath: platformsParent
