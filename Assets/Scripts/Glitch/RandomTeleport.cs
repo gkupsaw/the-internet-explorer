@@ -8,14 +8,14 @@ public class RandomTeleport : MonoBehaviour
     public int teleportCooldown = 3;
     public GameObject outline;
     // public GameObject[] platforms;
-    public GameObject platformList;
+    public GameObject platformsParent;
 
     private GameObject platform;
     private bool outlineTeleported = false;
 
     void Start()
     {
-        platform = getNextPlatform();
+        platform = platformsParent.transform.GetChild(platformsParent.transform.childCount - 1).gameObject;
 
         // teleport to intitial position
         Teleport();
@@ -71,11 +71,11 @@ public class RandomTeleport : MonoBehaviour
 
     GameObject[] getPlatforms()
     {
-        GameObject[] platforms = new GameObject[platformList.transform.childCount];
+        GameObject[] platforms = new GameObject[platformsParent.transform.childCount];
         // for (int i = 0; i < transform.childCount; i++)
-        for (int i = 0; i < platformList.transform.childCount; i++)
+        for (int i = 0; i < platformsParent.transform.childCount; i++)
         {
-            platforms[i] = platformList.transform.GetChild(i).gameObject;
+            platforms[i] = platformsParent.transform.GetChild(i).gameObject;
         }
         return platforms;
     }
