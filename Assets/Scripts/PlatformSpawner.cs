@@ -54,6 +54,9 @@ public class PlatformSpawner : MonoBehaviour
         generateNewLevel(bottomLevelYPos);
 
         InvokeRepeating("generateUndergroundLevel", 0f, levelMoveSpeed / levelSpawnRateModifier);
+
+        // this.playerObj.transform.position = allTiles[allTiles.Count - 1].transform.position + Vector3.up*this.playerHeight;
+
     }
 
     void Update()
