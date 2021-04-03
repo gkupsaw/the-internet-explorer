@@ -11,6 +11,7 @@ public class PlatformSpawner : MonoBehaviour
     // add free-fall fail-safe; pause player movement if drops below view
     // constant movement
 
+    public Sprite[] spriteArray;
     public GameObject platformBlockPrefab;
     public int platformsSpawned;
     public GameObject enemySpawner;
@@ -30,9 +31,9 @@ public class PlatformSpawner : MonoBehaviour
     List<GameObject> allTiles;
 
     float levelMoveSpeed = 3.0f;
-    float levelSpawnRateModifier = 0.66f;
+    float levelSpawnRateModifier = 1.5f;
     // higher spawn rate modifier -> the levels spawn faster
-    // this is multiplied on the level move speed
+    // actual level spawn rate: levelMoveSpeed / levelSpawnRateModifier
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +53,7 @@ public class PlatformSpawner : MonoBehaviour
         generateNewLevel(topLevelYPos);
         generateNewLevel(bottomLevelYPos);
 
-        InvokeRepeating("generateUndergroundLevel", 0f, levelMoveSpeed * levelSpawnRateModifier);
+        InvokeRepeating("generateUndergroundLevel", 0f, levelMoveSpeed / levelSpawnRateModifier);
     }
 
     void Update()
@@ -140,8 +141,14 @@ public class PlatformSpawner : MonoBehaviour
     {
         Vector3 tilePosition = new Vector3(xPos, yPos, 0);
         GameObject tile = (GameObject) Instantiate(platformBlockPrefab, tilePosition, Quaternion.identity);
+
         tile.transform.SetParent(this.platformObj.transform);
         enemySpawner.GetComponent<SpawnEnemies>().SpawnEnemyAdPair();
+
+        // assign random platform sprite
+        int randomSpriteIndex = Random.Range(0, 10);
+        SpriteRenderer spriteRenderer = platformBlockPrefab.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = spriteArray[randomSpriteIndex];
 
         return tile;
     }
