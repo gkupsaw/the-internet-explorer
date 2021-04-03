@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     public float runSpeed = 20f;
     public float m_JumpForce = 400f;							// Amount of force added when the player jumps.
     public float gravityScale = 2.4f;
+    public Animator animator;
 
     public LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
     public Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
@@ -19,7 +20,7 @@ public class CharacterMovement : MonoBehaviour
     Vector3 m_Velocity = Vector3.zero;
     bool isGrounded;
     bool jump;
-    public Sprite one;
+    public Sprite falling;
     public Sprite two;
     public Sprite three;
     public Sprite four;
@@ -38,10 +39,6 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        if (Input.GetButtonDown("Jump")) 
-        {
-            jump = true;
-        }
         Vector3 characterScale = transform.localScale; 
         if (Input.GetAxis("Horizontal") < 0) {
             characterScale.x = 5; //initial file is facing left
@@ -64,10 +61,9 @@ public class CharacterMovement : MonoBehaviour
             Flip();
         }
 
-        if (jump && isGrounded)
+        if (!isGrounded)
         {
-            jump = false;
-			body.AddForce(new Vector2(0f, m_JumpForce));
+             this.body.gameObject.GetComponent<SpriteRenderer>().sprite = falling;
         }
     }
 
