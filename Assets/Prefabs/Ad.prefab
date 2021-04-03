@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65852eae641434c0799e140cc27b096d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glitchDestroyedSound: {fileID: 8300000, guid: 9a4a486e2faa746b6bb7139d6ad53519, type: 3}
 --- !u!114 &8830431324223864341
 MonoBehaviour:
   m_ObjectHideFlags: 0
