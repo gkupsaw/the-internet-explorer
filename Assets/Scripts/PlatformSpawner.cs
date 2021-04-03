@@ -146,7 +146,7 @@ public class PlatformSpawner : MonoBehaviour
         enemySpawner.GetComponent<SpawnEnemies>().SpawnEnemyAdPair();
 
         // assign random platform sprite
-        int randomSpriteIndex = Random.Range(0, 10);
+        int randomSpriteIndex = Random.Range(0, spriteArray.Length);
         SpriteRenderer spriteRenderer = platformBlockPrefab.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = spriteArray[randomSpriteIndex];
 
