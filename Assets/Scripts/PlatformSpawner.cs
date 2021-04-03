@@ -20,7 +20,6 @@ public class PlatformSpawner : MonoBehaviour
     float bottomLevelYPos = -3.2f;
     float undergroundLevelYPos = -8.2f;
     float levelHeightDifference = 5.0f;
-    float blockSpawnRate = 0.2f;
 
     double blockPrefabWidth;
     float playerHeight;
@@ -31,10 +30,9 @@ public class PlatformSpawner : MonoBehaviour
     List<GameObject> allTiles;
 
     float levelMoveSpeed = 3.0f;
-    float levelSpawnRateModifier = 0.5f;
-
-    // float levelMoveSpeed = 3.2f;
-    // float levelSpawnRateModifier = 0.4f;
+    float levelSpawnRateModifier = 0.66f;
+    // higher spawn rate modifier -> the levels spawn faster
+    // this is multiplied on the level move speed
 
     // Start is called before the first frame update
     void Start()
@@ -95,8 +93,7 @@ public class PlatformSpawner : MonoBehaviour
         float maxXPos;
         float minXPos;
 
-        minXPos = leftMostX;
-        minXPos += (float) (blockPrefabWidth / 2);
+        minXPos = (float) (leftMostX + blockPrefabWidth / 2);
         maxXPos = (float) (rightMostX - spawnXBlocks * blockPrefabWidth);
 
         if (spawnXBlocks == 1) {
@@ -128,12 +125,12 @@ public class PlatformSpawner : MonoBehaviour
 
         for (int blocksLeft = spawnXBlocks - 1; spawnXBlocks >= 0; spawnXBlocks--) {
 
-            float maxHeight = height + this.levelHeightDifference / 2;
+            float maxHeight = height + this.levelHeightDifference / 3;
             float randomHeight = Random.Range(height, maxHeight);
 
             allTiles.Add(createTile(xPos, randomHeight));
 
-            minXPos = xPos + (float) blockPrefabWidth;
+            minXPos = xPos + (float) blockPrefabWidth * 1.5f;
             maxXPos = (float) (rightMostX - blocksLeft * blockPrefabWidth);
             xPos = Random.Range(minXPos, maxXPos);
         }
