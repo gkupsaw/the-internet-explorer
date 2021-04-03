@@ -11,6 +11,7 @@ public class PlatformSpawner : MonoBehaviour
     // add free-fall fail-safe; pause player movement if drops below view
     // constant movement
 
+    public Sprite[] spriteArray;
     public GameObject platformBlockPrefab;
     public int platformsSpawned;
     public GameObject enemySpawner;
@@ -20,7 +21,6 @@ public class PlatformSpawner : MonoBehaviour
     float bottomLevelYPos = -3.2f;
     float undergroundLevelYPos = -8.2f;
     float levelHeightDifference = 5.0f;
-    float blockSpawnRate = 0.2f;
 
     double blockPrefabWidth;
     float playerHeight;
@@ -31,10 +31,9 @@ public class PlatformSpawner : MonoBehaviour
     List<GameObject> allTiles;
 
     float levelMoveSpeed = 3.0f;
-    float levelSpawnRateModifier = 0.5f;
-
-    // float levelMoveSpeed = 3.2f;
-    // float levelSpawnRateModifier = 0.4f;
+    float levelSpawnRateModifier = 1.5f;
+    // higher spawn rate modifier -> the levels spawn faster
+    // actual level spawn rate: levelMoveSpeed / levelSpawnRateModifier
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +53,10 @@ public class PlatformSpawner : MonoBehaviour
         generateNewLevel(topLevelYPos);
         generateNewLevel(bottomLevelYPos);
 
-        InvokeRepeating("generateUndergroundLevel", 0f, levelMoveSpeed * levelSpawnRateModifier);
+        InvokeRepeating("generateUndergroundLevel", 0f, levelMoveSpeed / levelSpawnRateModifier);
+
+        // this.playerObj.transform.position = allTiles[allTiles.Count - 1].transform.position + Vector3.up*this.playerHeight;
+
     }
 
     void Update()
@@ -95,8 +97,7 @@ public class PlatformSpawner : MonoBehaviour
         float maxXPos;
         float minXPos;
 
-        minXPos = leftMostX;
-        minXPos += (float) (blockPrefabWidth / 2);
+        minXPos = (float) (leftMostX + blockPrefabWidth / 2);
         maxXPos = (float) (rightMostX - spawnXBlocks * blockPrefabWidth);
 
         if (spawnXBlocks == 1) {
@@ -128,12 +129,12 @@ public class PlatformSpawner : MonoBehaviour
 
         for (int blocksLeft = spawnXBlocks - 1; spawnXBlocks >= 0; spawnXBlocks--) {
 
-            float maxHeight = height + this.levelHeightDifference / 2;
+            float maxHeight = height + this.levelHeightDifference / 3;
             float randomHeight = Random.Range(height, maxHeight);
 
             allTiles.Add(createTile(xPos, randomHeight));
 
-            minXPos = xPos + (float) blockPrefabWidth;
+            minXPos = xPos + (float) blockPrefabWidth * 1.5f;
             maxXPos = (float) (rightMostX - blocksLeft * blockPrefabWidth);
             xPos = Random.Range(minXPos, maxXPos);
         }
@@ -143,8 +144,14 @@ public class PlatformSpawner : MonoBehaviour
     {
         Vector3 tilePosition = new Vector3(xPos, yPos, 0);
         GameObject tile = (GameObject) Instantiate(platformBlockPrefab, tilePosition, Quaternion.identity);
+
         tile.transform.SetParent(this.platformObj.transform);
         enemySpawner.GetComponent<SpawnEnemies>().SpawnEnemyAdPair();
+
+        // assign random platform sprite
+        int randomSpriteIndex = Random.Range(0, spriteArray.Length);
+        SpriteRenderer spriteRenderer = platformBlockPrefab.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = spriteArray[randomSpriteIndex];
 
         return tile;
     }
