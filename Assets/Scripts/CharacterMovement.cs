@@ -63,7 +63,10 @@ public class CharacterMovement : MonoBehaviour
 
         if (!isGrounded)
         {
-             this.body.gameObject.GetComponent<SpriteRenderer>().sprite = falling;
+            //  this.body.gameObject.GetComponent<SpriteRenderer>().sprite = falling;
+             animator.SetBool("falling", true);
+        } else {
+            animator.SetBool("falling", false);
         }
     }
 
