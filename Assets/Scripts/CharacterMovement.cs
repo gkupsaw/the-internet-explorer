@@ -82,4 +82,35 @@ public class CharacterMovement : MonoBehaviour
 		transform.localScale = theScale;
 	}
 
+    public float force = 0.4f;
+
+    void OnTriggerEnter2D(Collider2D collider){
+    // void OnCollisionEnter(Collision collision){
+        string tag = collider.gameObject.tag;
+        if (tag == "Glitch" || tag == "TeleportingGlitch" || tag == "WalkingGlitch"){
+            Debug.Log("!!! collided with enemy: " + tag);
+            // add knockback
+
+
+            GameObject gHit = collider.gameObject;
+            Transform tHit = gHit.transform;
+            Vector2 enemyPosition = new Vector3(tHit.position.x, tHit.position.y, tHit.position.z);
+            Vector2 playerPosition = transform.position;
+            Vector2 dir = enemyPosition - playerPosition;
+            dir = -dir.normalized;
+
+            body.velocity = new Vector2(0, 0);
+            body.inertia = 0;
+
+            // disable player controls
+            // playerControlerScript.playerControles = false;
+            // Invoke("EnablePlayerControles", 0.5f);
+
+            // modify the values since the low gravity makes the knockback fly way too high
+            Vector2 knockbackValues = new Vector2(dir.x / 0.4f, dir.y * 0.8f);
+
+            body.AddForce(knockbackValues * force, ForceMode2D.Force);
+        }
+    }
+
 }

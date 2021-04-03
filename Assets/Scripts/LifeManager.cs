@@ -33,6 +33,7 @@ public class LifeManager : MonoBehaviour
         if (tag == "Glitch"){
             lives--;
             this.player.transform.position = new Vector2(0, 5);
+            Debug.Log("LIVES DECREASED FROM GLITCH COLLISION");
             Debug.Log(lives);
         }
     }
