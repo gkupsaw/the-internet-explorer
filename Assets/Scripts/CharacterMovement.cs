@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public Rigidbody2D body;
+    public AudioClip platformLandSound;
 
     public float runSpeed = 20f;
     public float m_JumpForce = 400f;							// Amount of force added when the player jumps.
@@ -26,6 +27,7 @@ public class CharacterMovement : MonoBehaviour
     public Sprite five;
     int timer = 0;
     float horizontalMove = 0f;
+    float prevVelocityY = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +40,11 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        if (Input.GetButtonDown("Jump")) 
+        if (Input.GetButtonDown("Jump"))
         {
             jump = true;
         }
-        Vector3 characterScale = transform.localScale; 
+        Vector3 characterScale = transform.localScale;
         if (Input.GetAxis("Horizontal") < 0) {
             characterScale.x = 5; //initial file is facing left
         }
@@ -54,6 +56,7 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        bool currentlyMidAir = !isGrounded;
         float move = horizontalMove * Time.fixedDeltaTime * runSpeed;
 
         Vector3 targetVelocity = new Vector2(move, body.velocity.y);
@@ -64,11 +67,19 @@ public class CharacterMovement : MonoBehaviour
             Flip();
         }
 
+        // just landed
+        if (prevVelocityY < 0 && Mathf.Abs(body.velocity.y) < Mathf.Epsilon)
+        {
+            AudioSource.PlayClipAtPoint(platformLandSound, new Vector3(0,0,0));
+        }
+
         if (jump && isGrounded)
         {
             jump = false;
 			body.AddForce(new Vector2(0f, m_JumpForce));
         }
+
+        prevVelocityY = body.velocity.y;
     }
 
 	void Flip()
