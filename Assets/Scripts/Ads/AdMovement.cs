@@ -6,7 +6,8 @@ public class AdMovement : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "WalkingGlitch" || col.gameObject.tag == "TeleportingGlitch")
+        if (Input.GetMouseButton(0) &&
+            col.gameObject.tag == "WalkingGlitch" || col.gameObject.tag == "TeleportingGlitch")
         {
             Destroy(col.gameObject);
             Destroy(gameObject);
