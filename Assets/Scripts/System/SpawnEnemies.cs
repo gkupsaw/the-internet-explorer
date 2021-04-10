@@ -35,11 +35,11 @@ public class SpawnEnemies : MonoBehaviour
 
             if (e.tag == "WalkingGlitch")
             {
-                e.GetComponent<HorizontalMovement>().platform = ChoosePlatform();
+                e.GetComponent<HorizontalMovement>().platform = platformsParent.transform.GetChild(platformsParent.transform.childCount - 1).gameObject;//ChoosePlatform();
             }
             else if (e.tag == "TeleportingGlitch")
             {
-                e.GetComponent<RandomTeleport>().platformList = platformsParent;
+                e.GetComponent<RandomTeleport>().platformsParent = platformsParent;
             }
             else
             {

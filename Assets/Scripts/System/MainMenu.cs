@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void playGame() {
+    public void playGame()
+    {
+        GetComponent<AudioSource>().Play();
         SceneManager.LoadScene("FinalScene");
     }
 
