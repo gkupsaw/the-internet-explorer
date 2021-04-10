@@ -27,6 +27,8 @@ public class CharacterMovement : MonoBehaviour
     int timer = 0;
     float horizontalMove = 0f;
 
+    // bool controlsEnabled = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,9 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0){
             characterScale.x = -5;
         }
+        // if (controlsEnabled) 
+        // {
+        // }
     }
 
     void FixedUpdate()
@@ -82,9 +87,13 @@ public class CharacterMovement : MonoBehaviour
 		transform.localScale = theScale;
 	}
 
-    public float force = 0.4f;
+    // void EnablePlayerControls() 
+    // {
+    //     controlsEnabled = true;
+    // }
 
-    void OnTriggerEnter2D(Collider2D collider){
+    void OnTriggerEnter2D(Collider2D collider)
+    {
     // void OnCollisionEnter(Collision collision){
         string tag = collider.gameObject.tag;
         if (tag == "Glitch" || tag == "TeleportingGlitch" || tag == "WalkingGlitch"){
@@ -103,13 +112,16 @@ public class CharacterMovement : MonoBehaviour
             body.inertia = 0;
 
             // disable player controls
-            // playerControlerScript.playerControles = false;
-            // Invoke("EnablePlayerControles", 0.5f);
+            // controlsEnabled = false;
+            // Invoke("EnablePlayerControls", 10f);
 
             // modify the values since the low gravity makes the knockback fly way too high
-            Vector2 knockbackValues = new Vector2(dir.x / 0.4f, dir.y * 0.8f);
+            Vector2 knockbackValues = new Vector2(dir.x / 0.2f, dir.y * 0.8f);
+            // print("knockbackValues: " + knockbackValues);
 
-            body.AddForce(knockbackValues * force, ForceMode2D.Force);
+            body.AddForce(knockbackValues * 400, ForceMode2D.Force);
+            // body.AddForce(knockbackValues * 200, ForceMode.Impulse);
+
         }
     }
 
