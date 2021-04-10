@@ -21,9 +21,14 @@ public class LifeManager : MonoBehaviour
             // Debug.Log("GAME OVER!");
             SceneManager.LoadScene("GameOver");
         }
-        if (this.player.position.y > 7.8f || this.player.position.y < -6.5f || this.player.position.x > 12.5f || this.player.position.x < -12.5f){
+        if (this.player.position.y > 7.8f || 
+                this.player.position.y < -6.5f || 
+                this.player.position.x > 12.5f || 
+                this.player.position.x < -12.5f)
+        {
             lives--;
             this.player.transform.position = new Vector2(0, 5);
+            this.player.velocity = new Vector2(0, 0);
             Debug.Log(lives);
         }
     }

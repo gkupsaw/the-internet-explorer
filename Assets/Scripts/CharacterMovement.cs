@@ -127,7 +127,7 @@ public class CharacterMovement : MonoBehaviour
             // Invoke("EnablePlayerControls", 10f);
 
             // modify the values since the low gravity makes the knockback fly way too high
-            Vector2 knockbackValues = new Vector2(dir.x / 0.2f, dir.y * 0.8f);
+            Vector2 knockbackValues = new Vector2(dir.x / 0.3f, dir.y * 0.8f);
             // print("knockbackValues: " + knockbackValues);
 
             body.AddForce(knockbackValues * 400, ForceMode2D.Force);
