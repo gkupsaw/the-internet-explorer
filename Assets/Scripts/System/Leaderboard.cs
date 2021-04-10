@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Leaderboard : MonoBehaviour
 {
-    public Text name;
-    public Text score;
+    public TMP_Text playername;
+    public TMP_Text score;
     // use Application.persistentDataPath ?
     private string _filepath = "./Data/Leaderboard.json";
 
@@ -19,7 +20,7 @@ public class Leaderboard : MonoBehaviour
     public void Save()
     {
         Dictionary<string, string> currLeaderboard = Load();
-        currLeaderboard.Add(name.text, score.text);
+        currLeaderboard.Add(playername.text, score.text);
         System.IO.File.WriteAllText(_filepath, JsonUtility.ToJson(currLeaderboard));
     }
 
@@ -28,6 +29,7 @@ public class Leaderboard : MonoBehaviour
         using (StreamReader r = new StreamReader(_filepath))
         {
             string json = r.ReadToEnd();
+            Debug.Log(json);
             Dictionary<string, string> items = JsonUtility.FromJson<Dictionary<string, string>>(json);
             return items;
         }
