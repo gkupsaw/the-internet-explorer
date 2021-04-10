@@ -21,6 +21,8 @@ public class Leaderboard : MonoBehaviour
     {
         Dictionary<string, string> currLeaderboard = Load();
         currLeaderboard.Add(playername.text, score.text);
+        Debug.Log(currLeaderboard.Get(playername.text));
+        Debug.Log(JsonUtility.ToJson(currLeaderboard));
         System.IO.File.WriteAllText(_filepath, JsonUtility.ToJson(currLeaderboard));
     }
 
@@ -29,7 +31,6 @@ public class Leaderboard : MonoBehaviour
         using (StreamReader r = new StreamReader(_filepath))
         {
             string json = r.ReadToEnd();
-            Debug.Log(json);
             Dictionary<string, string> items = JsonUtility.FromJson<Dictionary<string, string>>(json);
             return items;
         }
