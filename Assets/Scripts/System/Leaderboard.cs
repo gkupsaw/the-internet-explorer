@@ -11,6 +11,11 @@ public class Leaderboard : MonoBehaviour
     // use Application.persistentDataPath ?
     private string _filepath = "./Data/Leaderboard.json";
 
+    void Start()
+    {
+        Save();
+    }
+
     public void Save()
     {
         Dictionary<string, string> currLeaderboard = Load();
