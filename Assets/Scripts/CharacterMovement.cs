@@ -43,15 +43,7 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-<<<<<<< HEAD
         Vector3 characterScale = transform.localScale; 
-=======
-        if (Input.GetButtonDown("Jump"))
-        {
-            jump = true;
-        }
-        Vector3 characterScale = transform.localScale;
->>>>>>> adcd1e5f5053d0c219f839de61cddabd74b44178
         if (Input.GetAxis("Horizontal") < 0) {
             characterScale.x = 5; //initial file is facing left
         }
@@ -77,9 +69,9 @@ public class CharacterMovement : MonoBehaviour
             Flip();
         }
 
-<<<<<<< HEAD
-        if (!isGrounded)
-=======
+        if (!isGrounded){
+            
+        }
         // just landed
         if (prevVelocityY < 0 && Mathf.Abs(body.velocity.y) < Mathf.Epsilon)
         {
@@ -87,7 +79,6 @@ public class CharacterMovement : MonoBehaviour
         }
 
         if (jump && isGrounded)
->>>>>>> adcd1e5f5053d0c219f839de61cddabd74b44178
         {
             //  this.body.gameObject.GetComponent<SpriteRenderer>().sprite = falling;
              animator.SetBool("falling", true);

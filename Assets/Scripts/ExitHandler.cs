@@ -54,4 +54,7 @@ public class ExitHandler : MonoBehaviour
     void OnMouseEnter(){
         Cursor.SetCursor(cursorHand, Vector2.zero, CursorMode.ForceSoftware);
     }
+    void OnMouseExit(){
+        Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
+    }
 }
