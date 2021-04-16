@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 5596770775004038534}
+  platformLandSound: {fileID: 8300000, guid: ac1e1ece0d38c4a6faf7cf02ec910d4a, type: 3}
   runSpeed: 20
   m_JumpForce: 400
   gravityScale: 2.4
