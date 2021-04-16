@@ -30,6 +30,8 @@ public class CharacterMovement : MonoBehaviour
     float horizontalMove = 0f;
     float prevVelocityY = 0f;
 
+    // bool controlsEnabled = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +58,9 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0){
             characterScale.x = -5;
         }
+        // if (controlsEnabled) 
+        // {
+        // }
     }
 
     void FixedUpdate()
@@ -103,5 +108,43 @@ public class CharacterMovement : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    // void EnablePlayerControls() 
+    // {
+    //     controlsEnabled = true;
+    // }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+    // void OnCollisionEnter(Collision collision){
+        string tag = collider.gameObject.tag;
+        if (tag == "Glitch" || tag == "TeleportingGlitch" || tag == "WalkingGlitch"){
+            Debug.Log("!!! collided with enemy: " + tag);
+            // add knockback
+
+
+            GameObject gHit = collider.gameObject;
+            Transform tHit = gHit.transform;
+            Vector2 enemyPosition = new Vector3(tHit.position.x, tHit.position.y, tHit.position.z);
+            Vector2 playerPosition = transform.position;
+            Vector2 dir = enemyPosition - playerPosition;
+            dir = -dir.normalized;
+
+            body.velocity = new Vector2(0, 0);
+            body.inertia = 0;
+
+            // disable player controls
+            // controlsEnabled = false;
+            // Invoke("EnablePlayerControls", 10f);
+
+            // modify the values since the low gravity makes the knockback fly way too high
+            Vector2 knockbackValues = new Vector2(dir.x / 0.3f, dir.y * 0.8f);
+            // print("knockbackValues: " + knockbackValues);
+
+            body.AddForce(knockbackValues * 400, ForceMode2D.Force);
+            // body.AddForce(knockbackValues * 200, ForceMode.Impulse);
+
+        }
+    }
 
 }

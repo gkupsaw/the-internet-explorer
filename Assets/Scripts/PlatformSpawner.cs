@@ -31,6 +31,7 @@ public class PlatformSpawner : MonoBehaviour
     List<GameObject> allTiles;
 
     float levelMoveSpeed = 3.0f;
+    // float levelMoveSpeed = 0f;
     float levelSpawnRateModifier = 1.5f;
     // higher spawn rate modifier -> the levels spawn faster
     // actual level spawn rate: levelMoveSpeed / levelSpawnRateModifier
@@ -38,7 +39,6 @@ public class PlatformSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print("Screen width: " + Screen.width);
         platformsSpawned = 0;
         this.platformObj = GameObject.Find("Platform");
         this.playerObj = GameObject.Find("Player");
