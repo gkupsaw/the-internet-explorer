@@ -26,9 +26,11 @@ public class CharacterMovement : MonoBehaviour
     public Sprite three;
     public Sprite four;
     public Sprite five;
+    public Sprite hit;
     int timer = 0;
     float horizontalMove = 0f;
     float prevVelocityY = 0f;
+    public GameObject player;
 
     // bool controlsEnabled = true;
 
@@ -70,7 +72,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         if (!isGrounded){
-            
+
         }
         // just landed
         if (prevVelocityY < 0 && Mathf.Abs(body.velocity.y) < Mathf.Epsilon)
@@ -113,7 +115,7 @@ public class CharacterMovement : MonoBehaviour
             Debug.Log("!!! collided with enemy: " + tag);
             // add knockback
 
-
+            this.player.gameObject.GetComponent<SpriteRenderer>().sprite = hit;
             GameObject gHit = collider.gameObject;
             Transform tHit = gHit.transform;
             Vector2 enemyPosition = new Vector3(tHit.position.x, tHit.position.y, tHit.position.z);
