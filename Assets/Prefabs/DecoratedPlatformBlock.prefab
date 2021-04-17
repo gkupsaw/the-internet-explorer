@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9221734986442258776}
   - component: {fileID: 9221734986442258778}
   - component: {fileID: 2310297529141639483}
+  - component: {fileID: 1997862188703884427}
   m_Layer: 0
   m_Name: DecoratedPlatformBlock
   m_TagString: Untagged
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a5430d090e07b4af1b1990f248c6127e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c88945b5d00d54dde84faf96276fa9a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,7 +107,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.84, y: 2.62}
+    oldSize: {x: 8.83, y: 2.63}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -127,3 +128,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55178621fc7d4712a39487ed4ba8a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1997862188703884427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9221734986442258783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0

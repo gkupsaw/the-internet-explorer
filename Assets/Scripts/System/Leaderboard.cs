@@ -25,10 +25,12 @@ public class Leaderboard : MonoBehaviour
 
     public void Save()
     {
+        string playername = _playername.text.Trim();
+        if (playername.Length == 0) return;
+
         Debug.Log("Saving leaderboard...");
         Dictionary<string, string> currLeaderboard = Load();
 
-        string playername = _playername.text.Trim();
         string score = _rawScore.ToString();
         if (currLeaderboard.ContainsKey(playername))
         {
