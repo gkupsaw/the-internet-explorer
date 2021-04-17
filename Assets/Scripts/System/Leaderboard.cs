@@ -14,11 +14,13 @@ public class Leaderboard : MonoBehaviour
     public GameObject _valueUIElements;
     // use Application.persistentDataPath ?
     private string _filepath = "./Data/Leaderboard.json";
+    private float _rawScore;
 
     void Start()
     {
         // Save();
-        _score.text = "Score: " + Mathf.Ceil(GetComponent<ScoreManager>().GetScore()).ToString();
+        _rawScore = Mathf.Ceil(GetComponent<ScoreManager>().GetScore());
+        _score.text = "Score: " + _rawScore.ToString();
     }
 
     public void Save()
@@ -27,7 +29,7 @@ public class Leaderboard : MonoBehaviour
         Dictionary<string, string> currLeaderboard = Load();
 
         string playername = _playername.text.Trim();
-        string score = _score.text.Trim();
+        string score = _rawScore.ToString();
         if (currLeaderboard.ContainsKey(playername))
         {
             currLeaderboard.Remove(playername);
