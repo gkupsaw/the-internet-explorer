@@ -16,6 +16,8 @@ public class ExitHandler : MonoBehaviour
     public Texture2D cursorArrow;
     public Texture2D cursorHand;
 
+    private GameObject statsDisplay;
+    private StatsDisplay stats;
 
     void Start()
     {
@@ -23,6 +25,8 @@ public class ExitHandler : MonoBehaviour
         // this.exitButton.transform.position = new Vector3(-10, -10, 10); //change to z later
         difficultyFactor = 1;
         scrollStartX = this.scrollBar.position.x;
+        statsDisplay = GameObject.Find("StatsDisplay");
+        stats = statsDisplay.GetComponent<StatsDisplay>();
     }
 
     // Update is called once per frame
@@ -45,6 +49,8 @@ public class ExitHandler : MonoBehaviour
         GameObject go = GameObject.Find("Score");
         ScoreManager score = go.GetComponent<ScoreManager>();
         score.scoreCount = score.scoreCount + 100;
+        stats.incrementFirewallCount(100);
+
         difficultyFactor++;
         Debug.Log(difficultyFactor);
 
