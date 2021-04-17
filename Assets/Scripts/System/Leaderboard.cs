@@ -17,6 +17,7 @@ public class Leaderboard : MonoBehaviour
     void Start()
     {
         // Save();
+        _score.text = GetComponent<ScoreManager>().GetScore().ToString();
     }
 
     public void Save()

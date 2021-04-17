@@ -11,16 +11,20 @@ public class ScoreManager : MonoBehaviour
     public float scoreCount;
     public float pointsPerSecond;
     public bool scoreIncreasing;
+    static float score;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreCount  += pointsPerSecond * Time.deltaTime;
+        scoreCount += pointsPerSecond * Time.deltaTime;
+        score = scoreCount;
         scoreText.text = "Score: " + Mathf.Round(scoreCount);
     }
+
+    public float GetScore() { return score; }
 }

@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 102571354}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 599109927}
+        m_TargetAssemblyTypeName: Leaderboard, Assembly-CSharp
+        m_MethodName: Save
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &102571354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 599109926}
   - component: {fileID: 599109927}
+  - component: {fileID: 599109928}
   m_Layer: 0
   m_Name: Leaderboard
   m_TagString: Untagged
@@ -563,8 +576,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ee5db2c2130435693d95fb24486518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playername: {fileID: 0}
-  _score: {fileID: 0}
+  _playername: {fileID: 132712080}
+  _score: {fileID: 2059636947}
+--- !u!114 &599109928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599109925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28b3ee6d01474961ad67f8810b9a2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  scoreCount: 0
+  pointsPerSecond: 0
+  scoreIncreasing: 0
 --- !u!1 &840024561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,13 +1911,13 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1902,7 +1931,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2059636948}
   m_TextComponent: {fileID: 1585854937}
   m_Placeholder: {fileID: 1298819427}
@@ -1926,7 +1955,7 @@ MonoBehaviour:
   m_Text: 
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
   m_ShouldActivateOnSelect: 1
 --- !u!114 &2059636948
 MonoBehaviour:
@@ -2001,7 +2030,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -391.9, y: 174.16473}
+  m_AnchoredPosition: {x: -391.9, y: 192}
   m_SizeDelta: {x: 100, y: 108.621}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2069724929
