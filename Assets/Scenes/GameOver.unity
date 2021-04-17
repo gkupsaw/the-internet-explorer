@@ -578,6 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playername: {fileID: 132712080}
   _score: {fileID: 2059636947}
+  _valueUIElements: {fileID: 2069724927}
 --- !u!114 &599109928
 MonoBehaviour:
   m_ObjectHideFlags: 0

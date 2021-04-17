@@ -11,6 +11,7 @@ public class Leaderboard : MonoBehaviour
 {
     public InputField _playername;
     public InputField _score;
+    public GameObject _valueUIElements;
     // use Application.persistentDataPath ?
     private string _filepath = "./Data/Leaderboard.json";
 
@@ -35,6 +36,7 @@ public class Leaderboard : MonoBehaviour
 
         System.IO.File.WriteAllText(_filepath, Serialize(currLeaderboard));
         Debug.Log("Saved leaderboard!");
+        Destroy(_valueUIElements);
     }
 
     Dictionary<string, string> Load()
