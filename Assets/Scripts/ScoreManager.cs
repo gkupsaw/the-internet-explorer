@@ -21,9 +21,12 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreCount += pointsPerSecond * Time.deltaTime;
-        score = scoreCount;
-        scoreText.text = "Score: " + Mathf.Round(scoreCount);
+        if (scoreText)
+        {
+            scoreCount += pointsPerSecond * Time.deltaTime;
+            score = scoreCount;
+            scoreText.text = "Score: " + Mathf.Round(scoreCount);
+        }
     }
 
     public float GetScore() { return score; }
