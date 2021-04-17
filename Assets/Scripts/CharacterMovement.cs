@@ -52,6 +52,8 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0){
             characterScale.x = -5;
         }
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        animator.SetBool("isHit", false);
         // if (controlsEnabled) 
         // {
         // }
@@ -72,7 +74,9 @@ public class CharacterMovement : MonoBehaviour
         }
 
         if (!isGrounded){
-
+            animator.SetBool("falling", true);
+        } else {
+            animator.SetBool("falling", false);
         }
         // just landed
         if (prevVelocityY < 0 && Mathf.Abs(body.velocity.y) < Mathf.Epsilon)
@@ -83,9 +87,9 @@ public class CharacterMovement : MonoBehaviour
         if (jump && isGrounded)
         {
             //  this.body.gameObject.GetComponent<SpriteRenderer>().sprite = falling;
-             animator.SetBool("falling", true);
+            //  animator.SetBool("falling", true);
         } else {
-            animator.SetBool("falling", false);
+            // animator.SetBool("falling", false);
         }
 
         prevVelocityY = body.velocity.y;
@@ -115,7 +119,6 @@ public class CharacterMovement : MonoBehaviour
             Debug.Log("!!! collided with enemy: " + tag);
             // add knockback
 
-            this.player.gameObject.GetComponent<SpriteRenderer>().sprite = hit;
             GameObject gHit = collider.gameObject;
             Transform tHit = gHit.transform;
             Vector2 enemyPosition = new Vector3(tHit.position.x, tHit.position.y, tHit.position.z);
@@ -135,6 +138,7 @@ public class CharacterMovement : MonoBehaviour
             // print("knockbackValues: " + knockbackValues);
 
             body.AddForce(knockbackValues * 400, ForceMode2D.Force);
+            animator.SetBool("isHit", true);
             // body.AddForce(knockbackValues * 200, ForceMode.Impulse);
 
         }

@@ -362,6 +362,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ecba392cf2e6e4adeb4182b1251d03ea, type: 3}
     - target: {fileID: 4871428887420525092, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 44337142}
+    - target: {fileID: 4871428887420525092, guid: a834a4f97ddd446f1ab6942598c721b7, type: 3}
       propertyPath: gravityScale
       value: 1
       objectReference: {fileID: 0}
