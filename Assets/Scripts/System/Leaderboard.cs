@@ -9,18 +9,19 @@ using TMPro;
 
 public class Leaderboard : MonoBehaviour
 {
-    public TMP_Text _playername;
-    public TMP_Text _score;
+    public InputField _playername;
+    public InputField _score;
     // use Application.persistentDataPath ?
     private string _filepath = "./Data/Leaderboard.json";
 
     void Start()
     {
-        Save();
+        // Save();
     }
 
     public void Save()
     {
+        Debug.Log("Saving leaderboard...");
         Dictionary<string, string> currLeaderboard = Load();
 
         string playername = _playername.text.Trim();
@@ -32,6 +33,7 @@ public class Leaderboard : MonoBehaviour
         currLeaderboard.Add(playername, score);
 
         System.IO.File.WriteAllText(_filepath, Serialize(currLeaderboard));
+        Debug.Log("Saved leaderboard!");
     }
 
     Dictionary<string, string> Load()
@@ -69,7 +71,7 @@ public class Leaderboard : MonoBehaviour
         string res = "";
         int i = 0;
         int sz = dict.Keys.Count;
-        foreach(KeyValuePair<string, string> kvp in dict)
+        foreach (KeyValuePair<string, string> kvp in dict)
         {
             string playername = kvp.Key.Trim();
             string score = kvp.Value.Trim();
