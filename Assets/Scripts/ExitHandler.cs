@@ -31,7 +31,7 @@ public class ExitHandler : MonoBehaviour
         if (this.scrollBar.position.y > 1.8f){
             spawned = false;
         }
-        if(this.scrollBar.position.y < 1.8f && spawned == false){
+        if(this.scrollBar.position.y < -2.75f && spawned == false){
             spawned = true;
             this.exitButton.transform.position = new Vector2(0, -2.5f);
         }
@@ -53,5 +53,8 @@ public class ExitHandler : MonoBehaviour
     }
     void OnMouseEnter(){
         Cursor.SetCursor(cursorHand, Vector2.zero, CursorMode.ForceSoftware);
+    }
+    void OnMouseExit(){
+        Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
     }
 }

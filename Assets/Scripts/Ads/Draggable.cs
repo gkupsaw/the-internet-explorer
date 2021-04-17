@@ -7,6 +7,8 @@ public class Draggable : MonoBehaviour
 {
     // The plane the object is currently being dragged on
     private Plane dragPlane;
+    public Texture2D cursorArrow;
+    public Texture2D cursorHand;  
 
     // The difference between where the mouse is on the drag plane and
     // where the origin of the object is on the drag plane
@@ -41,5 +43,11 @@ public class Draggable : MonoBehaviour
         float planeDist;
         dragPlane.Raycast(camRay, out planeDist);
         transform.position = camRay.GetPoint(planeDist) + offset;
+    }
+    void OnMouseEnter(){
+        Cursor.SetCursor(cursorHand, Vector2.zero, CursorMode.ForceSoftware);
+    }
+    void OnMouseExit(){
+        Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
     }
 }

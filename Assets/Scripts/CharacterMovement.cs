@@ -10,6 +10,7 @@ public class CharacterMovement : MonoBehaviour
     public float runSpeed = 20f;
     public float m_JumpForce = 400f;							// Amount of force added when the player jumps.
     public float gravityScale = 2.4f;
+    public Animator animator;
 
     public LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
     public Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
@@ -20,14 +21,16 @@ public class CharacterMovement : MonoBehaviour
     Vector3 m_Velocity = Vector3.zero;
     bool isGrounded;
     bool jump;
-    public Sprite one;
+    public Sprite falling;
     public Sprite two;
     public Sprite three;
     public Sprite four;
     public Sprite five;
+    public Sprite hit;
     int timer = 0;
     float horizontalMove = 0f;
     float prevVelocityY = 0f;
+    public GameObject player;
 
     // bool controlsEnabled = true;
 
@@ -42,11 +45,7 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        if (Input.GetButtonDown("Jump"))
-        {
-            jump = true;
-        }
-        Vector3 characterScale = transform.localScale;
+        Vector3 characterScale = transform.localScale; 
         if (Input.GetAxis("Horizontal") < 0) {
             characterScale.x = 5; //initial file is facing left
         }
@@ -72,6 +71,9 @@ public class CharacterMovement : MonoBehaviour
             Flip();
         }
 
+        if (!isGrounded){
+
+        }
         // just landed
         if (prevVelocityY < 0 && Mathf.Abs(body.velocity.y) < Mathf.Epsilon)
         {
@@ -80,8 +82,10 @@ public class CharacterMovement : MonoBehaviour
 
         if (jump && isGrounded)
         {
-            jump = false;
-			body.AddForce(new Vector2(0f, m_JumpForce));
+            //  this.body.gameObject.GetComponent<SpriteRenderer>().sprite = falling;
+             animator.SetBool("falling", true);
+        } else {
+            animator.SetBool("falling", false);
         }
 
         prevVelocityY = body.velocity.y;
@@ -111,7 +115,7 @@ public class CharacterMovement : MonoBehaviour
             Debug.Log("!!! collided with enemy: " + tag);
             // add knockback
 
-
+            this.player.gameObject.GetComponent<SpriteRenderer>().sprite = hit;
             GameObject gHit = collider.gameObject;
             Transform tHit = gHit.transform;
             Vector2 enemyPosition = new Vector3(tHit.position.x, tHit.position.y, tHit.position.z);
