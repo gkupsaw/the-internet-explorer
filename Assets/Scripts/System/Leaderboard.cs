@@ -22,11 +22,11 @@ public class Leaderboard : MonoBehaviour
     {
         // Save();
         _rawScore = Mathf.Ceil(GetComponent<ScoreManager>().GetScore());
-        _score.text = "Score: " + _rawScore.ToString();
+        _score.text = "Your Score: " + _rawScore.ToString();
         Render();
     }
 
-    public void Save()
+    public void Save(string name)
     {
         string playername = _playername.text.Trim();
         if (playername.Length == 0) return;

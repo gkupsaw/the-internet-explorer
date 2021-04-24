@@ -45,16 +45,18 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        Vector3 characterScale = transform.localScale; 
-        if (Input.GetAxis("Horizontal") < 0) {
+        Vector3 characterScale = transform.localScale;
+        if (Input.GetAxis("Horizontal") < 0)
+        {
             characterScale.x = 5; //initial file is facing left
         }
-        if (Input.GetAxis("Horizontal") > 0){
+        if (Input.GetAxis("Horizontal") > 0)
+        {
             characterScale.x = -5;
         }
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         animator.SetBool("isHit", false);
-        // if (controlsEnabled) 
+        // if (controlsEnabled)
         // {
         // }
     }
@@ -73,50 +75,57 @@ public class CharacterMovement : MonoBehaviour
             Flip();
         }
 
-        if (!isGrounded){
+        if (!isGrounded)
+        {
             animator.SetBool("falling", true);
-        } else {
+        }
+        else
+        {
             animator.SetBool("falling", false);
-            animator.SetTrigger("landing");
+            // animator.SetTrigger("landing");
         }
         // just landed
         if (prevVelocityY < 0 && Mathf.Abs(body.velocity.y) < Mathf.Epsilon)
         {
-            AudioSource.PlayClipAtPoint(platformLandSound, new Vector3(0,0,0));
+            animator.SetTrigger("landing");
+            AudioSource.PlayClipAtPoint(platformLandSound, new Vector3(0, 0, 0));
         }
 
         if (jump && isGrounded)
         {
             //  this.body.gameObject.GetComponent<SpriteRenderer>().sprite = falling;
             //  animator.SetBool("falling", true);
-        } else {
+        }
+        else
+        {
             // animator.SetBool("falling", false);
         }
 
         prevVelocityY = body.velocity.y;
     }
 
-	void Flip()
-	{
-		// Switch the way the player is labelled as facing.
-		m_FacingRight = !m_FacingRight;
+    void Flip()
+    {
+        // Switch the way the player is labelled as facing.
+        m_FacingRight = !m_FacingRight;
 
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}
+        // Multiply the player's x local scale by -1.
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
 
-    // void EnablePlayerControls() 
+    // void EnablePlayerControls()
     // {
     //     controlsEnabled = true;
     // }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-    // void OnCollisionEnter(Collision collision){
+        // void OnCollisionEnter(Collision collision){
         string tag = collider.gameObject.tag;
-        if (tag == "Glitch" || tag == "TeleportingGlitch" || tag == "WalkingGlitch"){
+        if (tag == "Glitch" || tag == "TeleportingGlitch" || tag == "WalkingGlitch")
+        {
             player.GetComponent<LifeManager>().lives--;
             this.player.transform.position = new Vector2(0, 5);
 
@@ -135,7 +144,7 @@ public class CharacterMovement : MonoBehaviour
 
             // body.velocity = new Vector2(0, 0);
             // body.inertia = 0;
-            
+
             // disable player controls
             // controlsEnabled = false;
             // Invoke("EnablePlayerControls", 10f);
