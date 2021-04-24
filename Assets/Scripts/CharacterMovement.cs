@@ -129,17 +129,17 @@ public class CharacterMovement : MonoBehaviour
 
             body.velocity = new Vector2(0, 0);
             body.inertia = 0;
-
+            
             // disable player controls
             // controlsEnabled = false;
             // Invoke("EnablePlayerControls", 10f);
 
             // modify the values since the low gravity makes the knockback fly way too high
-            Vector2 knockbackValues = new Vector2(dir.x / 0.3f, dir.y * 0.8f);
-            // print("knockbackValues: " + knockbackValues);
+            // Vector2 knockbackValues = new Vector2(dir.x / 0.3f, dir.y * 0.8f);
+            // // print("knockbackValues: " + knockbackValues);
 
-            body.AddForce(knockbackValues * 400, ForceMode2D.Force);
-            animator.SetBool("isHit", true);
+            // body.AddForce(knockbackValues * 400, ForceMode2D.Force);
+            // animator.SetBool("isHit", true);
             // body.AddForce(knockbackValues * 200, ForceMode.Impulse);
 
         }
