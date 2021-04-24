@@ -12,6 +12,8 @@ public class Leaderboard : MonoBehaviour
     public InputField _playername;
     public InputField _score;
     public GameObject _valueUIElements;
+    public GameObject[] _rows;
+    // public GameObject _rowPrefab;
     // use Application.persistentDataPath ?
     private string _filepath = "./Data/Leaderboard.json";
     private float _rawScore;
@@ -21,6 +23,7 @@ public class Leaderboard : MonoBehaviour
         // Save();
         _rawScore = Mathf.Ceil(GetComponent<ScoreManager>().GetScore());
         _score.text = "Score: " + _rawScore.ToString();
+        Render();
     }
 
     public void Save()
@@ -91,5 +94,25 @@ public class Leaderboard : MonoBehaviour
             i++;
         }
         return "{\n" + res + "}";
+    }
+    void Render()
+    {
+        Transform display = transform.Find("Display");
+        Dictionary<string, string> leaderboard = Load();
+        GameObject row;
+
+        int i = 0, MAX_SCORES = _rows.Length;
+        foreach (KeyValuePair<string, string> kvp in leaderboard)
+        {
+            string playername = kvp.Key.Trim();
+            string score = kvp.Value.Trim();
+            row = _rows[i];
+            row.transform.Find("Col1").GetComponent<TMP_Text>().text = playername;
+            row.transform.Find("Col2").GetComponent<TMP_Text>().text = score;
+            row.transform.parent = display;
+            i++;
+
+            if (i >= MAX_SCORES) break;
+        }
     }
 }
