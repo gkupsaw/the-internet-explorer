@@ -117,18 +117,24 @@ public class CharacterMovement : MonoBehaviour
     // void OnCollisionEnter(Collision collision){
         string tag = collider.gameObject.tag;
         if (tag == "Glitch" || tag == "TeleportingGlitch" || tag == "WalkingGlitch"){
-            Debug.Log("!!! collided with enemy: " + tag);
+            player.GetComponent<LifeManager>().lives--;
+            this.player.transform.position = new Vector2(0, 5);
+
+            // Debug.Log("LIVES DECREASED FROM GLITCH COLLISION");
+            // Debug.Log(lives);
+
             // add knockback
+            // Debug.Log("!!! collided with enemy: " + tag);
 
-            GameObject gHit = collider.gameObject;
-            Transform tHit = gHit.transform;
-            Vector2 enemyPosition = new Vector3(tHit.position.x, tHit.position.y, tHit.position.z);
-            Vector2 playerPosition = transform.position;
-            Vector2 dir = enemyPosition - playerPosition;
-            dir = -dir.normalized;
+            // GameObject gHit = collider.gameObject;
+            // Transform tHit = gHit.transform;
+            // Vector2 enemyPosition = new Vector3(tHit.position.x, tHit.position.y, tHit.position.z);
+            // Vector2 playerPosition = transform.position;
+            // Vector2 dir = enemyPosition - playerPosition;
+            // dir = -dir.normalized;
 
-            body.velocity = new Vector2(0, 0);
-            body.inertia = 0;
+            // body.velocity = new Vector2(0, 0);
+            // body.inertia = 0;
             
             // disable player controls
             // controlsEnabled = false;
