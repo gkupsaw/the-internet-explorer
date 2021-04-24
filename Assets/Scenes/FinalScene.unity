@@ -1569,6 +1569,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 814808394}
     m_Modifications:
+    - target: {fileID: 833672351137094421, guid: f33748ef4b1504963bbfe35287222e81, type: 3}
+      propertyPath: aTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 2a8910574ae914dc2aee1f8c3284614b, type: 3}
+    - target: {fileID: 833672351137094421, guid: f33748ef4b1504963bbfe35287222e81, type: 3}
+      propertyPath: lifeIconTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 2a8910574ae914dc2aee1f8c3284614b, type: 3}
+    - target: {fileID: 833672351137094421, guid: f33748ef4b1504963bbfe35287222e81, type: 3}
+      propertyPath: firewallIconTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: ecb18c187c4d94230a322ba0c37747f1, type: 3}
     - target: {fileID: 833672351137094422, guid: f33748ef4b1504963bbfe35287222e81, type: 3}
       propertyPath: m_Name
       value: StatsDisplay
@@ -1616,6 +1628,14 @@ PrefabInstance:
     - target: {fileID: 833672351137094423, guid: f33748ef4b1504963bbfe35287222e81, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515315020319530898, guid: f33748ef4b1504963bbfe35287222e81, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515315021673432965, guid: f33748ef4b1504963bbfe35287222e81, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33748ef4b1504963bbfe35287222e81, type: 3}
