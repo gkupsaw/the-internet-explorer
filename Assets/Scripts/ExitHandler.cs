@@ -49,7 +49,7 @@ public class ExitHandler : MonoBehaviour
         GameObject go = GameObject.Find("Score");
         ScoreManager score = go.GetComponent<ScoreManager>();
         score.scoreCount = score.scoreCount + 100;
-        stats.incrementFirewallCount(100);
+        stats.incrementFirewallCount(1);
 
         difficultyFactor++;
         Debug.Log(difficultyFactor);
