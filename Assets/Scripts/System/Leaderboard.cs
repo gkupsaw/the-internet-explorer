@@ -45,7 +45,9 @@ public class Leaderboard : MonoBehaviour
 
         System.IO.File.WriteAllText(_filepath, Serialize(currLeaderboard));
         Debug.Log("Saved leaderboard!");
-        Destroy(_valueUIElements);
+        _valueUIElements.transform.Find("Name").gameObject.GetComponent<InputField>().interactable = false;
+        // Destroy(_valueUIElements);
+        Render();
     }
 
     Dictionary<string, int> Load()
