@@ -4,6 +4,9 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using System.Linq;
+
 
 // disallowed chars: {}\",:
 
@@ -16,49 +19,50 @@ public class Leaderboard : MonoBehaviour
     // public GameObject _rowPrefab;
     // use Application.persistentDataPath ?
     private string _filepath = "./Data/Leaderboard.json";
-    private float _rawScore;
+    private int _rawScore;
 
     void Start()
     {
         // Save();
-        _rawScore = Mathf.Ceil(GetComponent<ScoreManager>().GetScore());
-        _score.text = "Score: " + _rawScore.ToString();
+        _rawScore = (int)(GetComponent<ScoreManager>().GetScore());
+        _score.text = "Your   Score: " + _rawScore.ToString();
         Render();
     }
 
-    public void Save()
+    public void Save(string name)
     {
         string playername = _playername.text.Trim();
         if (playername.Length == 0) return;
 
         Debug.Log("Saving leaderboard...");
-        Dictionary<string, string> currLeaderboard = Load();
+        Dictionary<string, int> currLeaderboard = Load();
 
-        string score = _rawScore.ToString();
         if (currLeaderboard.ContainsKey(playername))
         {
             currLeaderboard.Remove(playername);
         }
-        currLeaderboard.Add(playername, score);
+        currLeaderboard.Add(playername, _rawScore);
 
         System.IO.File.WriteAllText(_filepath, Serialize(currLeaderboard));
         Debug.Log("Saved leaderboard!");
-        Destroy(_valueUIElements);
+        _valueUIElements.transform.Find("Name").gameObject.GetComponent<InputField>().interactable = false;
+        // Destroy(_valueUIElements);
+        Render();
     }
 
-    Dictionary<string, string> Load()
+    Dictionary<string, int> Load()
     {
         using (StreamReader r = new StreamReader(_filepath))
         {
             string data = r.ReadToEnd();
-            Dictionary<string, string> currLeaderboard = Deserialize(data);
+            Dictionary<string, int> currLeaderboard = Deserialize(data);
             return currLeaderboard;
         }
     }
 
-    Dictionary<string, string> Deserialize(string data)
+    Dictionary<string, int> Deserialize(string data)
     {
-        Dictionary<string, string> dict = new Dictionary<string, string>();
+        Dictionary<string, int> dict = new Dictionary<string, int>();
         string[] nameScores = data.Substring(1, data.Length - 2).Split(',');
 
         foreach (string nameScore in nameScores)
@@ -70,21 +74,28 @@ public class Leaderboard : MonoBehaviour
                 return dict;
             }
 
-            dict.Add(ns[0].Replace('"', ' ').Trim(), ns[1].Replace('"', ' ').Trim());
+            try
+            {
+                dict.Add(ns[0].Replace('"', ' ').Trim(), Int32.Parse(ns[1].Replace('"', ' ').Trim()));
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine($"Unable to parse '{ns[1]}'");
+            }
         }
 
         return dict;
     }
 
-    string Serialize(Dictionary<string, string> dict)
+    string Serialize(Dictionary<string, int> dict)
     {
         string res = "";
         int i = 0;
         int sz = dict.Keys.Count;
-        foreach (KeyValuePair<string, string> kvp in dict)
+        foreach (KeyValuePair<string, int> kvp in dict)
         {
             string playername = kvp.Key.Trim();
-            string score = kvp.Value.Trim();
+            string score = kvp.Value.ToString().Trim();
             res += "\"" + playername + "\"" + " : " + "\"" + score + "\"";
             if (i < sz - 1)
             {
@@ -98,14 +109,15 @@ public class Leaderboard : MonoBehaviour
     void Render()
     {
         Transform display = transform.Find("Display");
-        Dictionary<string, string> leaderboard = Load();
+        Dictionary<string, int> leaderboard = Load();
         GameObject row;
 
+
         int i = 0, MAX_SCORES = _rows.Length;
-        foreach (KeyValuePair<string, string> kvp in leaderboard)
+        foreach (KeyValuePair<string, int> kvp in leaderboard.OrderByDescending(key => key.Value))
         {
             string playername = kvp.Key.Trim();
-            string score = kvp.Value.Trim();
+            string score = kvp.Value.ToString().Trim();
             row = _rows[i];
             row.transform.Find("Col1").GetComponent<TMP_Text>().text = playername;
             row.transform.Find("Col2").GetComponent<TMP_Text>().text = score;

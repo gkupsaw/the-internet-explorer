@@ -17,13 +17,14 @@ public class LifeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lives == 0){
+        if (lives == 0)
+        {
             // Debug.Log("GAME OVER!");
             SceneManager.LoadScene("GameOver");
         }
-        if (this.player.position.y > 12.0f ||  // originally 7.8f; "grace period" distance for respawn
-                this.player.position.y < -6.5f || 
-                this.player.position.x > 12.5f || 
+        else if (this.player.position.y > 12.0f ||  // originally 7.8f; "grace period" distance for respawn
+                this.player.position.y < -6.5f ||
+                this.player.position.x > 12.5f ||
                 this.player.position.x < -12.5f)
         {
             lives--;
