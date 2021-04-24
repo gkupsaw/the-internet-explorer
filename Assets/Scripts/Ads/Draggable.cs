@@ -46,7 +46,7 @@ public class Draggable : MonoBehaviour
     }
     void OnMouseEnter()
     {
-        // Cursor.SetCursor(cursorHand, Vector2.zero, CursorMode.ForceSoftware);
+        Cursor.SetCursor(cursorHand, Vector2.zero, CursorMode.ForceSoftware);
     }
     void OnMouseExit()
     {
