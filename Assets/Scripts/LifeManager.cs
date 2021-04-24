@@ -17,7 +17,7 @@ public class LifeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lives == 0)
+        if (lives <= 0)
         {
             // Debug.Log("GAME OVER!");
             SceneManager.LoadScene("GameOver");
