@@ -77,6 +77,7 @@ public class CharacterMovement : MonoBehaviour
             animator.SetBool("falling", true);
         } else {
             animator.SetBool("falling", false);
+            animator.SetTrigger("landing");
         }
         // just landed
         if (prevVelocityY < 0 && Mathf.Abs(body.velocity.y) < Mathf.Epsilon)
