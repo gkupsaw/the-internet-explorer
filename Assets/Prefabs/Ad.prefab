@@ -293,8 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe0a9518e5054337815e3917ef46c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorArrow: {fileID: 0}
-  cursorHand: {fileID: 0}
+  cursorArrow: {fileID: 2800000, guid: 858c5dca1a3b4420293667a180cc61bb, type: 3}
+  cursorHand: {fileID: 2800000, guid: 0ee0b28adc73e4bdaa6508d3fe90afc2, type: 3}
 --- !u!114 &5878834748135775693
 MonoBehaviour:
   m_ObjectHideFlags: 0
