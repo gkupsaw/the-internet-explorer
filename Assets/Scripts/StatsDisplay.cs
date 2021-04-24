@@ -29,8 +29,8 @@ public class StatsDisplay : MonoBehaviour
     {
         string lifeText = "x" + Player.GetComponent<LifeManager>().lives;
         string firewallText = "x" + firewallCount;
-        GUI.Label(new Rect(200, 40, 100, 40), lifeText, guiStyle);
-        GUI.Label(new Rect(200 + 150, 40, 100, 40), firewallText, guiStyle);
+        GUI.Label(new Rect(130, 45, 100, 40), lifeText, guiStyle);
+        GUI.Label(new Rect(130 + 140, 45, 100, 40), firewallText, guiStyle);
     }
 
     public void incrementFirewallCount(int incValue) {

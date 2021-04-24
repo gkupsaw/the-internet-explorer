@@ -16,6 +16,7 @@ public class ExitHandler : MonoBehaviour
     public Texture2D cursorArrow;
     public Texture2D cursorHand;
 
+    public AudioSource loopingSound;
     private GameObject statsDisplay;
     private StatsDisplay stats;
 
@@ -49,12 +50,13 @@ public class ExitHandler : MonoBehaviour
         GameObject go = GameObject.Find("Score");
         ScoreManager score = go.GetComponent<ScoreManager>();
         score.scoreCount = score.scoreCount + 100;
-        stats.incrementFirewallCount(100);
+        stats.incrementFirewallCount(1);
 
         difficultyFactor++;
         Debug.Log(difficultyFactor);
 
         GameObject enemySpawner = GameObject.Find("EnemySpawner");
+        this.loopingSound.Play();
         enemySpawner.GetComponent<SpawnEnemies>().enemySpawnProb /= 3;
     }
     void OnMouseEnter(){
