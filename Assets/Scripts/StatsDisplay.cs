@@ -10,7 +10,9 @@ public class StatsDisplay : MonoBehaviour
     // public GameObject lifeIconPrefab;
     // public GameObject firewallIconPrefab;
     private GameObject Player;
+    private GameObject Score;
     private GUIStyle guiStyle = new GUIStyle();
+    private GUIStyle scoreStyle = new GUIStyle();
     private int firewallCount = 0;
 
     public float DesignWidth = 1920.0f;
@@ -27,7 +29,13 @@ public class StatsDisplay : MonoBehaviour
         guiStyle.normal.textColor = Color.white; //change the font color
         guiStyle.alignment = TextAnchor.UpperCenter;
         guiStyle.font = font;
+
+        scoreStyle.fontSize = 80; //change the font size
+        scoreStyle.normal.textColor = Color.white; //change the font color
+        scoreStyle.alignment = TextAnchor.UpperLeft;
+        scoreStyle.font = font;
         Player = GameObject.Find("Player");
+        Score = GameObject.Find("Score");
 
         // GameObject lifeIcon = (GameObject) Instantiate(lifeIconPrefab, new Vector2(100, 45), Quaternion.identity);
         // lifeIcon.transform.SetParent(this.transform);
@@ -37,27 +45,24 @@ public class StatsDisplay : MonoBehaviour
     {
         float resX = (float) (Screen.width) / DesignWidth;
         float resY = (float) (Screen.height) / DesignHeight;
-        //Set matrix
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(resX, resY, 1));
-
-
 
         string lifeText = "x" + Player.GetComponent<LifeManager>().lives;
         string firewallText = "x" + firewallCount;
-        // GUI.Label(new Rect(130, 45, 100, 40), lifeText, guiStyle);
-        Vector3 temp = (transform.position);
-        print(temp);
+        string scoreText = "SCORE: " + Mathf.Round(Score.GetComponent<ScoreManager>().GetScore());
 
         int xPos = 180;
-        int imageYPos = 40;
-        int textYPos = 70;
+        int imageYPos = 100;
+        int textYPos = imageYPos + 20;
+        int iconTextGap = 80;
 
-        int iconTextGap = 100;
-        GUI.DrawTexture(new Rect(xPos, imageYPos, 100, 100), lifeIconTexture, ScaleMode.ScaleToFit, true);
+        GUI.Label(new Rect(xPos, 20, 10, 40), scoreText, scoreStyle);
+
+        GUI.DrawTexture(new Rect(xPos, imageYPos, 80, 80), lifeIconTexture, ScaleMode.ScaleToFit, true);
         GUI.Label(new Rect(xPos + iconTextGap, textYPos, 100, 40), lifeText, guiStyle);
 
         xPos += 260;
-        GUI.DrawTexture(new Rect(xPos, imageYPos, 100, 100), firewallIconTexture, ScaleMode.ScaleToFit, true);
+        GUI.DrawTexture(new Rect(xPos, imageYPos, 80, 80), firewallIconTexture, ScaleMode.ScaleToFit, true);
         GUI.Label(new Rect(xPos + iconTextGap, textYPos, 100, 40), firewallText, guiStyle);
     }
 
